@@ -1,21 +1,21 @@
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
-:- use_module(library(http/http_parameters)).
-:- use_module(library(plweb)).
-:- use_module(library(http/http_log)).
-:- use_module(library(http/thread_httpd)).
-:- use_module(config).
-:- use_module(handlers/user_handler).
-:- use_module(handlers/post_handler).
-% Definir rotas da API
-% :- http_handler(root(api/user), user_handler, []).
-% :- http_handler(root(api/post), post_handler, []).
+:- use_module(library(http/html_write)).
 
-% Iniciar servidor HTTP
-:- initialization start_server.
+% URL handlers.
+:- http_handler('/', handle_request, []).
 
-port(8000).
+% Request handlers.
+handle_request(_Request) :-
+    get_time(X),  % X = seconds elapsed since the epoch.
+    reply_html_page(
+        [title('Hello')],
+        [h1('Hello'), p(X)]
+    ).
 
-start_server :-
-    port(Port),
-    http_server(http_dispatch, [port(Port)]).
+server(Port) :-
+    http_server(http_dispatch, [port(Port)]),
+    format('Server running at http://localhost:~w~n', [Port]).
+
+:- initialization(server(8000)).
+
