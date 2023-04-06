@@ -5,10 +5,10 @@ export const Landing = () => {
   return (
     <div>
       <h1>Bem-vindo</h1>
-      <Link to="/head">
+      <Link to="/create">
         <button>Fazer consulta</button>
       </Link>
-      <Link to="/patients">
+      <Link to="/consult">
         <p>Consultar Pacientes</p>
       </Link>
     </div>
