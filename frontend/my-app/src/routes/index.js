@@ -6,7 +6,8 @@ import { Chest } from "../pages/Parts/Chest";
 import { Body } from "../pages/Parts/Body";
 import { Stomach } from "../pages/Parts/Stomach";
 import { Intimate } from "../pages/Parts/Intimate";
-import { Patients } from "../pages/Patients";
+import { Consult } from "../pages/Patients/Consult";
+import { Create } from "../pages/Patients/Create";
 
 export const AppRouter = () => {
   return (
@@ -17,8 +18,9 @@ export const AppRouter = () => {
         <Route path="/chest" element={<Chest />} />
         <Route path="/body" element={<Body />} />
         <Route path="/stomach" element={<Stomach />} />
-        <Route path="/Intimate" element={<Intimate />} />
-        <Route path="/patients" element={<Patients />} />
+        <Route path="/intimate" element={<Intimate />} />
+        <Route path="/consult" element={<Consult />} />
+        <Route path="/create" element={<Create />} />
       </Routes>
     </Router>
   );

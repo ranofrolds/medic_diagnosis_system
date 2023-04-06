@@ -8,7 +8,7 @@ export const Landing = () => {
       <Link to="/head">
         <button>Fazer consulta</button>
       </Link>
-      <Link to="/patients">
+      <Link to="/consult">
         <p>Consultar Pacientes</p>
       </Link>
     </div>

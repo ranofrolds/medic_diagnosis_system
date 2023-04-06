@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "../../styles/style.css";
+import "../../../styles/style.css";
 
-export const Patients = () => {
+export const Create = () => {
   return (
     <div>
-      <h1>Listagem Pacientes</h1>
+      <h1>Cadastro Paciente</h1>
       <Link to="/">
         <p>Voltar ao menu principal</p>
       </Link>
