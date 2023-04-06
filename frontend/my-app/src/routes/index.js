@@ -8,6 +8,7 @@ import { Stomach } from "../pages/Parts/Stomach";
 import { Intimate } from "../pages/Parts/Intimate";
 import { Consult } from "../pages/Patients/Consult";
 import { Create } from "../pages/Patients/Create";
+import { Result } from "../pages/Result";
 
 export const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ export const AppRouter = () => {
         <Route path="/intimate" element={<Intimate />} />
         <Route path="/consult" element={<Consult />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </Router>
   );

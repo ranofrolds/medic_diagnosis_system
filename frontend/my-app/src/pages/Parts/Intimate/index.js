@@ -47,7 +47,7 @@ export const Intimate = () => {
           />
           Sangramento ao evacuar
         </label>
-        <Link to="/">
+        <Link to="/result">
           <button type="submit">Próximo</button>
         </Link>
       </form>
