@@ -4,7 +4,7 @@ import "../../../styles/style.css";
 export const Chest = () => {
   return (
     <div>
-      <h1>Sintomas no peito</h1>
+      <h1>Sintomas no Peito</h1>
       <Link to="/body">
         <button>Próximo</button>
       </Link>

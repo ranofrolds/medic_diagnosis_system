@@ -4,7 +4,7 @@ import "../../../styles/style.css";
 export const Stomach = () => {
   return (
     <div>
-      <h1>Sintomas no estomago</h1>
+      <h1>Sintomas no Estômago</h1>
       <Link to="/intimate">
         <button>Próximo</button>
       </Link>
