@@ -1,11 +1,16 @@
+import { Link } from "react-router-dom";
 import "../../styles/style.css";
 
 export const Landing = () => {
   return (
     <div>
       <h1>Bem-vindo</h1>
-      <button>Fazer consulta</button>
-      <a href="#">Consultar Pacientes</a>
+      <Link to="/head">
+        <button>Fazer consulta</button>
+      </Link>
+      <Link to="/patients">
+        <p>Consultar Pacientes</p>
+      </Link>
     </div>
   );
 };
