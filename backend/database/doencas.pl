@@ -12,11 +12,7 @@ doenca(hemorroidas, 0.4).
 doenca(gastrite, 0.4).
 doenca(hipertensao, 0.4).
 doenca(tuberculose, 0.3).
-doenca(diabetes, 0.3).
-doenca(artrite, 0.3).
-doenca(osteoporose, 0.2).
-doenca(hepatite, 0.2).
-doenca(alzheimer, 0.1).
+
 
 % lista de sintomas agrupados pela lista acima de doenças
 % sintoma(doenca, nome_sintoma)
@@ -60,23 +56,3 @@ sintoma(hipertensao, visao_turva).
 sintoma(tuberculose, tosse_persistente).
 sintoma(tuberculose, febre).
 sintoma(tuberculose, perda_de_peso).
-
-sintoma(diabetes, aumento_da_sede).
-sintoma(diabetes, aumento_da_urina).
-sintoma(diabetes, fadiga).
-
-sintoma(artrite, dor_nas_articulacoes).
-sintoma(artrite, inchaco_nas_articulacoes).
-sintoma(artrite, rigidez_articular).
-
-sintoma(osteoporose, dor_ossea).
-sintoma(osteoporose, fraturas_frequentes).
-sintoma(osteoporose, diminuicao_da_altura).
-
-sintoma(hepatite, ictericia).
-sintoma(hepatite, dor_abdominal).
-sintoma(hepatite, fadiga).
-
-sintoma(alzheimer, perda_de_memoria).
-sintoma(alzheimer, dificuldade_de_concentracao).
-sintoma(alzheimer, mudancas_de_humor).
