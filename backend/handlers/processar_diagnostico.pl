@@ -1,6 +1,6 @@
-:- use_module(library(http/http_client)).
-:- use_module(library(http/http_parameters)).
 :- module(processar_diagnostico, [processar_diagnostico_handler/1]).
+:- use_module(library(http/http_client)).
+
 
 processar_diagnostico_handler(Request) :-
     member(method(post), Request), !,
