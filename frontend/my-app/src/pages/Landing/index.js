@@ -5,7 +5,7 @@ export const Landing = () => {
   return (
     <div>
       <h1>Bem-vindo</h1>
-      <Link to="/head">
+      <Link to="/create">
         <button>Fazer consulta</button>
       </Link>
       <Link to="/consult">

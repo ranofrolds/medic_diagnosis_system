@@ -5,8 +5,8 @@ export const Create = () => {
   return (
     <div>
       <h1>Cadastro Paciente</h1>
-      <Link to="/">
-        <p>Voltar ao menu principal</p>
+      <Link to="/head">
+        <button>Cadastrar</button>
       </Link>
     </div>
   );
