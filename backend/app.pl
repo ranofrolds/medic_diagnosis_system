@@ -6,10 +6,11 @@
 :- use_module(handlers/listar_pacientes).
 :- use_module(handlers/remover_paciente).
 
+:- consult('./database/doencas.pl').
 
 % URL handlers.
 % :- http_handler('/buscar_cpf', buscar_cpf_handler, []).
-% :- http_handler('/processar_diagnostico', processar_diagnostico_handler, [method(post)]).
+:- http_handler('/processar_diagnostico', processar_diagnostico_handler, []).
 :- http_handler('/listar_pacientes', listar_pacientes_handler, []).
 :- http_handler('/remover_paciente', remover_paciente_handler, []).
 
