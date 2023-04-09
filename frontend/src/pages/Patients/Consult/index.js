@@ -39,7 +39,7 @@ export const Consult = () => {
           Atualizar paciente
         </Button>
         <Link to="/">
-          <p>Voltar ao menu principal</p>
+          <p id="back-menu">Voltar ao menu principal</p>
         </Link>
       </div>
     </div>

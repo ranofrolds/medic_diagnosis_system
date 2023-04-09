@@ -12,7 +12,7 @@ export const Landing = () => {
           <Button className="btn-large">Fazer consulta</Button>
         </Link>
         <Link to="/consult">
-          <p className="consult">Consultar Pacientes</p>
+          <p id="consult">Consultar Pacientes</p>
         </Link>
       </div>
     </div>
