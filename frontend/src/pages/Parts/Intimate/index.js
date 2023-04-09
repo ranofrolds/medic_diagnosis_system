@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ClientProvider } from "../../../components/clientContext";
 import Button from "react-bootstrap/Button";
 import FinalizarConsulta from "../../../components/FinalizarConsulta";
 
@@ -21,7 +22,7 @@ export const Intimate = () => {
 
   // Função que será chamada ao clicar no botão "Finalizar consulta"
   const handleFinishConsult = () => {
-    FinalizarConsulta(formValues);
+    FinalizarConsulta(ClientProvider);
   };
 
   return (
