@@ -1,3 +1,11 @@
+POST http://localhost:8000/listar_sintomas
+Content-Type: application/json
+
+{
+    "doenca":"herpes",
+    "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+}
+
 POST http://localhost:8000/processar_diagnostico
 Content-Type: application/json
 
@@ -6,4 +14,11 @@ Content-Type: application/json
     "nome": "Pedro",
     "idade": 25,
     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+}
+
+POST http://localhost:8000/remover_paciente
+Content-Type: application/json
+
+{
+    "cpf":"12345678900",
 }
