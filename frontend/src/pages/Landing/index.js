@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 import "../../styles/style.css";
 
 export const Landing = () => {
@@ -6,7 +8,7 @@ export const Landing = () => {
     <div>
       <h1>Bem-vindo</h1>
       <Link to="/create">
-        <button>Fazer consulta</button>
+        <Button>Fazer consulta</Button>
       </Link>
       <Link to="/consult">
         <p>Consultar Pacientes</p>

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { ClientContext } from "../../../components/clientContext";
 import axiosInstance from "../../../components/axiosInstances";
+import Button from "react-bootstrap/Button";
+
 import "../../../styles/style.css";
 
 export const Create = () => {
@@ -61,7 +63,7 @@ export const Create = () => {
             <label>Idade</label>
           </div>
           <Link to="/head">
-            <button>Cadastrar</button>
+            <Button>Cadastrar</Button>
           </Link>
         </form>
       </div>

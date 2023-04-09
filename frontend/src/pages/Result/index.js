@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 import "../../styles/style.css";
 
 export const Result = () => {
@@ -12,7 +14,7 @@ export const Result = () => {
         </b>
       </p>
       <Link to="/">
-        <button>Voltar ao menu</button>
+        <Button>Voltar ao menu</Button>
       </Link>
     </div>
   );
