@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useContext } from "react";
+import { ClientContext } from "../../../components/clientContext";
 import axiosInstance from "../../../components/axiosInstances";
 import "../../../styles/style.css";
 
 export const Create = () => {
-  const [cpf, setCpf] = useState("");
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const { cpf, setCpf, name, setName, age, setAge } = useContext(ClientContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
