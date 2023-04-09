@@ -6,7 +6,7 @@ import "../../../styles/style.css";
 
 export const Stomach = () => {
   //Define um estado para armazenar os valores dos campos do formulário
-  const [formValues, setFormValues] = useState({
+  const [stomachValues, setStomachValues] = useState({
     azia: false,
     dor_no_estomago: false,
   });
@@ -14,8 +14,8 @@ export const Stomach = () => {
   // Função que atualiza o estado quando um campo é modificado
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
-    setFormValues({ ...formValues, [name]: checked });
-    console.log(formValues);
+    setStomachValues({ ...stomachValues, [name]: checked });
+    console.log(stomachValues);
   };
 
   return (
@@ -27,7 +27,7 @@ export const Stomach = () => {
             <input
               type="checkbox"
               name="azia"
-              checked={formValues.azia}
+              checked={stomachValues.azia}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Azia
@@ -36,7 +36,7 @@ export const Stomach = () => {
             <input
               type="checkbox"
               name="dor_no_estomago"
-              checked={formValues.dor_no_estomago}
+              checked={stomachValues.dor_no_estomago}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Dor no estomago

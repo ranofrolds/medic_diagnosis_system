@@ -7,33 +7,43 @@ export const ClientProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   // Sintomas do corpo
-  const [coceira, setCoceira] = useState(false);
-  const [dor_na_pele, setDor_na_pele] = useState(false);
-  const [dor_no_corpo, setDor_no_corpo] = useState(false);
-  const [fadiga, setFadiga] = useState(false);
-  const [febre, setFebre] = useState(false);
-  const [febre_alta, setFebre_alta] = useState(false);
-  const [inflamacao_na_pele, setInflamacao_na_pele] = useState(false);
-  const [palidez, setPalidez] = useState(false);
-  const [perda_de_peso, setPerda_de_peso] = useState(false);
+  const [bodyValues, setBodyValues] = useState({
+    coceira: false,
+    dor_na_pele: false,
+    dor_no_corpo: false,
+    fadiga: false,
+    febre: false,
+    febre_alta: false,
+    inflamacao_na_pele: false,
+    palidez: false,
+    perda_de_peso: false,
+  });
   // Sintomas no peito
-  const [chiado_no_peito, setChiado_no_peito] = useState(false);
-  const [falta_de_ar, setFalta_de_ar] = useState(false);
-  const [tosse_persistente, setTosse_persistente] = useState(false);
-  const [tosse_seca, setTosse_seca] = useState(false);
+  const [chestValues, setChestValues] = useState({
+    chiado_no_peito: false,
+    falta_de_ar: false,
+    tosse_persistente: false,
+    tosse_seca: false,
+  });
   // Sintomas na cabeça
-  const [dor_de_cabeca, setDor_de_cabeca] = useState(false);
-  const [nausea, setNausea] = useState(false);
-  const [sensibilidade_a_luz, setSensibilidade_a_luz] = useState(false);
-  const [tontura, setTontura] = useState(false);
-  const [visao_turva, setVisao_turva] = useState(false);
+  const [headValues, setHeadValues] = useState({
+    dor_de_cabeca: false,
+    nausea: false,
+    sensibilidade_a_luz: false,
+    tontura: false,
+    visao_turva: false,
+  });
   // Sintomas em regiões íntimas
-  const [coceira_anal, setCoceira_anal] = useState(false);
-  const [dor_ao_evacuar, setDor_ao_evacuar] = useState(false);
-  const [sangramento_ao_evacuar, setSangramento_ao_evacuar] = useState(false);
+  const [intimateValues, setIntimateValues] = useState({
+    coceira_anal: false,
+    dor_ao_evacuar: false,
+    sangramento_ao_evacuar: false,
+  });
   //Sintomas no estomago
-  const [azia, setAzia] = useState(false);
-  const [dor_no_estomago, setDor_no_estomago] = useState(false);
+  const [stomachValues, setStomachValues] = useState({
+    azia: false,
+    dor_no_estomago: false,
+  });
 
   const values = {
     cpf,
@@ -43,56 +53,20 @@ export const ClientProvider = ({ children }) => {
     age,
     setAge,
     // Sintomas do corpo
-    coceira,
-    setCoceira,
-    dor_na_pele,
-    setDor_na_pele,
-    dor_no_corpo,
-    setDor_no_corpo,
-    fadiga,
-    setFadiga,
-    febre,
-    setFebre,
-    febre_alta,
-    setFebre_alta,
-    inflamacao_na_pele,
-    setInflamacao_na_pele,
-    palidez,
-    setPalidez,
-    perda_de_peso,
-    setPerda_de_peso,
+    bodyValues,
+    setBodyValues,
     // Sintomas no peito
-    chiado_no_peito,
-    setChiado_no_peito,
-    falta_de_ar,
-    setFalta_de_ar,
-    tosse_persistente,
-    setTosse_persistente,
-    tosse_seca,
-    setTosse_seca,
+    chestValues,
+    setChestValues,
     // Sintomas na cabeça
-    dor_de_cabeca,
-    setDor_de_cabeca,
-    nausea,
-    setNausea,
-    sensibilidade_a_luz,
-    setSensibilidade_a_luz,
-    tontura,
-    setTontura,
-    visao_turva,
-    setVisao_turva,
+    headValues,
+    setHeadValues,
     // Sintomas em regiões íntimas
-    coceira_anal,
-    setCoceira_anal,
-    dor_ao_evacuar,
-    setDor_ao_evacuar,
-    sangramento_ao_evacuar,
-    setSangramento_ao_evacuar,
+    intimateValues,
+    setIntimateValues,
     //Sintomas no estomago
-    azia,
-    setAzia,
-    dor_no_estomago,
-    setDor_no_estomago,
+    stomachValues,
+    setStomachValues,
   };
 
   return (

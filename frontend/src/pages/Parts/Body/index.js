@@ -6,7 +6,7 @@ import "../../../styles/style.css";
 
 export const Body = () => {
   //Define um estado para armazenar os valores dos campos do formulário
-  const [formValues, setFormValues] = useState({
+  const [bodyValues, setBodyValues] = useState({
     coceira: false,
     dor_na_pele: false,
     dor_no_corpo: false,
@@ -20,8 +20,8 @@ export const Body = () => {
 
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
-    setFormValues({ ...formValues, [name]: checked });
-    console.log(formValues);
+    setBodyValues({ ...bodyValues, [name]: checked });
+    console.log(bodyValues);
   };
 
   return (
@@ -33,7 +33,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="coceira"
-              checked={formValues.coceira}
+              checked={bodyValues.coceira}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Coceira
@@ -42,7 +42,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="dor_na_pele"
-              checked={formValues.dor_na_pele}
+              checked={bodyValues.dor_na_pele}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Dor na pele
@@ -51,7 +51,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="dor_no_corpo"
-              checked={formValues.dor_no_corpo}
+              checked={bodyValues.dor_no_corpo}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Dor no corpo
@@ -60,7 +60,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="fadiga"
-              checked={formValues.fadiga}
+              checked={bodyValues.fadiga}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Fadiga
@@ -69,7 +69,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="febre"
-              checked={formValues.febre}
+              checked={bodyValues.febre}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Febre
@@ -78,7 +78,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="febre_alta"
-              checked={formValues.febre_alta}
+              checked={bodyValues.febre_alta}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Febre alta
@@ -87,7 +87,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="inflamacao_na_pele"
-              checked={formValues.inflamacao_na_pele}
+              checked={bodyValues.inflamacao_na_pele}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Inflamação na pele
@@ -96,7 +96,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="palidez"
-              checked={formValues.palidez}
+              checked={bodyValues.palidez}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Palidez
@@ -105,7 +105,7 @@ export const Body = () => {
             <input
               type="checkbox"
               name="perda_de_peso"
-              checked={formValues.perda_de_peso}
+              checked={bodyValues.perda_de_peso}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Perda de pesa

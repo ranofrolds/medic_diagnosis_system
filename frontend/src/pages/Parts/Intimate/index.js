@@ -6,7 +6,7 @@ import "../../../styles/style.css";
 
 export const Intimate = () => {
   //Define um estado para armazenar os valores dos campos do formulário
-  const [formValues, setFormValues] = useState({
+  const [intimateValues, setIntimateValues] = useState({
     coceira_anal: false,
     dor_ao_evacuar: false,
     sangramento_ao_evacuar: false,
@@ -15,8 +15,8 @@ export const Intimate = () => {
   // Função que atualiza o estado quando um campo é modificado
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
-    setFormValues({ ...formValues, [name]: checked });
-    console.log(formValues);
+    setIntimateValues({ ...intimateValues, [name]: checked });
+    console.log(intimateValues);
   };
 
   // Função que será chamada ao clicar no botão "Finalizar consulta"
@@ -33,7 +33,7 @@ export const Intimate = () => {
             <input
               type="checkbox"
               name="coceira_anal"
-              checked={formValues.coceira_anal}
+              checked={intimateValues.coceira_anal}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Coceira anal
@@ -42,7 +42,7 @@ export const Intimate = () => {
             <input
               type="checkbox"
               name="dor_ao_evacuar"
-              checked={formValues.dor_ao_evacuar}
+              checked={intimateValues.dor_ao_evacuar}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Dor ao evacuar
@@ -51,7 +51,7 @@ export const Intimate = () => {
             <input
               type="checkbox"
               name="sangramento_ao_evacuar"
-              checked={formValues.sangramento_ao_evacuar}
+              checked={intimateValues.sangramento_ao_evacuar}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Sangramento ao evacuar

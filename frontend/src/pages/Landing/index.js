@@ -5,8 +5,8 @@ import "../../styles/style.css";
 
 export const Landing = () => {
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1 id="bem-vindo">Bem-vindo</h1>
         <Link to="/create">
           <Button className="btn-large">Fazer consulta</Button>

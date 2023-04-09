@@ -5,8 +5,8 @@ import "../../styles/style.css";
 
 export const Result = () => {
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Resultado</h1>
         <h2>
           O resultado do protótipo é apenas informativo, o paciente deve

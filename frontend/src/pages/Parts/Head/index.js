@@ -6,7 +6,7 @@ import "../../../styles/style.css";
 
 export const Head = () => {
   //Define um estado para armazenar os valores dos campos do formulário
-  const [formValues, setFormValues] = useState({
+  const [headValues, setHeadValues] = useState({
     dor_de_cabeca: false,
     nausea: false,
     sensibilidade_a_luz: false,
@@ -16,8 +16,8 @@ export const Head = () => {
 
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
-    setFormValues({ ...formValues, [name]: checked });
-    console.log(formValues);
+    setHeadValues({ ...headValues, [name]: checked });
+    console.log(headValues);
   };
 
   return (
@@ -29,7 +29,7 @@ export const Head = () => {
             <input
               type="checkbox"
               name="dor_de_cabeca"
-              checked={formValues.dor_de_cabeca}
+              checked={headValues.dor_de_cabeca}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Dor de cabeça
@@ -38,7 +38,7 @@ export const Head = () => {
             <input
               type="checkbox"
               name="nausea"
-              checked={formValues.nausea}
+              checked={headValues.nausea}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Náusea
@@ -47,7 +47,7 @@ export const Head = () => {
             <input
               type="checkbox"
               name="sensibilidade_a_luz"
-              checked={formValues.sensibilidade_a_luz}
+              checked={headValues.sensibilidade_a_luz}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Sensibilidade a Luz
@@ -56,7 +56,7 @@ export const Head = () => {
             <input
               type="checkbox"
               name="tontura"
-              checked={formValues.tontura}
+              checked={headValues.tontura}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Tontura
@@ -65,7 +65,7 @@ export const Head = () => {
             <input
               type="checkbox"
               name="visao_turva"
-              checked={formValues.visao_turva}
+              checked={headValues.visao_turva}
               onChange={handleInputChange}
             />
             <span>&nbsp;</span>Visão turva

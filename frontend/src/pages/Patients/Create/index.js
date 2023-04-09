@@ -15,12 +15,12 @@ export const Create = () => {
   };
 
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Cadastro Paciente</h1>
-        <div class="login-div">
+        <div className="login-div">
           <form>
-            <div class="input-box">
+            <div className="input-box">
               <input
                 type="text"
                 required
@@ -32,7 +32,7 @@ export const Create = () => {
               <label>CPF</label>
             </div>
 
-            <div class="input-box">
+            <div className="input-box">
               <input
                 type="text"
                 required
@@ -42,7 +42,7 @@ export const Create = () => {
               <label>Nome</label>
             </div>
 
-            <div class="input-box">
+            <div className="input-box">
               <input
                 type="number"
                 required
