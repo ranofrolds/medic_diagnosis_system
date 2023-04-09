@@ -111,7 +111,7 @@ export const Body = () => {
             <span>&nbsp;</span>Perda de pesa
           </label>
           <Link to="/stomach">
-            <Button type="submit" className="btn-custom">
+            <Button onClick={handleInputChange} type="submit" className="btn-custom">
               Próximo
             </Button>
           </Link>

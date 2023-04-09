@@ -62,7 +62,7 @@ export const Chest = () => {
             <span>&nbsp;</span>Tosse seca
           </label>
           <Link to="/body">
-            <Button type="submit" className="btn-custom">
+            <Button onClick={handleInputChange} type="submit" className="btn-custom">
               Próximo
             </Button>
           </Link>

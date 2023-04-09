@@ -71,7 +71,11 @@ export const Head = () => {
             <span>&nbsp;</span>Visão turva
           </label>
           <Link to="/chest">
-            <Button type="submit" className="btn-custom">
+            <Button
+              onClick={handleInputChange}
+              type="submit"
+              className="btn-custom"
+            >
               Próximo
             </Button>
           </Link>

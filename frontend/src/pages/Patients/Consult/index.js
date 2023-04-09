@@ -9,8 +9,8 @@ export const Consult = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Listagem Pacientes</h1>
         <div
           className="modal-show"
@@ -31,7 +31,11 @@ export const Consult = () => {
             </Modal.Footer>
           </Modal>
         </div>
-        <Button className="btn-custom" variant="primary" onClick={() => setShowModal(true)}>
+        <Button
+          className="btn-custom"
+          variant="primary"
+          onClick={() => setShowModal(true)}
+        >
           Atualizar paciente
         </Button>
         <Link to="/">

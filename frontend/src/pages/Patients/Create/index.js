@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import React, { useContext } from "react";
-import { ClientContext } from "../../../components/clientContext";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 import "../../../styles/style.css";
 
 export const Create = () => {
-  const { cpf, setCpf, name, setName, age, setAge } = useContext(ClientContext);
+  const [cpf, setCpf] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
 
   const handleInputChange = (event) => {
     console.log(cpf);

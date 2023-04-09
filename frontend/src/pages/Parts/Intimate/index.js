@@ -19,11 +19,6 @@ export const Intimate = () => {
     console.log(intimateValues);
   };
 
-  // Função que será chamada ao clicar no botão "Finalizar consulta"
-  const handleFinishConsult = () => {
-    console.log("Entrou");
-  };
-
   return (
     <div className="main-div">
       <div className="box-div">
@@ -61,7 +56,7 @@ export const Intimate = () => {
             <Button
               type="button"
               className="btn-custom"
-              onClick={handleFinishConsult}
+              onClick={handleInputChange}
             >
               Finalizar consulta
             </Button>

@@ -42,7 +42,11 @@ export const Stomach = () => {
             <span>&nbsp;</span>Dor no estomago
           </label>
           <Link to="/intimate">
-            <Button type="submit" className="btn-custom">
+            <Button
+              onClick={handleInputChange}
+              type="submit"
+              className="btn-custom"
+            >
               Próximo
             </Button>
           </Link>
