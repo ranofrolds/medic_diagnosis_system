@@ -18,40 +18,42 @@ export const Intimate = () => {
   };
 
   return (
-    <div>
-      <h1>Sintomas nas Regiões Íntimas</h1>
-      <form>
-        <label>
-          <input
-            type="checkbox"
-            name="coceira_anal"
-            checked={formValues.coceira_anal}
-            onChange={handleInputChange}
-          />
-          Coceira anal
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="dor_ao_evacuar"
-            checked={formValues.dor_ao_evacuar}
-            onChange={handleInputChange}
-          />
-          Dor ao evacuar
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="sangramento_ao_evacuar"
-            checked={formValues.sangramento_ao_evacuar}
-            onChange={handleInputChange}
-          />
-          Sangramento ao evacuar
-        </label>
-        <Link to="/result">
-          <Button type="submit">Finalizar consulta</Button>
-        </Link>
-      </form>
+    <div class="main-div">
+      <div class="box-div">
+        <h1>Sintomas nas Regiões Íntimas</h1>
+        <form>
+          <label>
+            <input
+              type="checkbox"
+              name="coceira_anal"
+              checked={formValues.coceira_anal}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Coceira anal
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="dor_ao_evacuar"
+              checked={formValues.dor_ao_evacuar}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Dor ao evacuar
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="sangramento_ao_evacuar"
+              checked={formValues.sangramento_ao_evacuar}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Sangramento ao evacuar
+          </label>
+          <Link to="/result">
+            <Button type="submit">Finalizar consulta</Button>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

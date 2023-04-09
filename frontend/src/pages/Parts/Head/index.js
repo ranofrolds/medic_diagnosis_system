@@ -21,58 +21,60 @@ export const Head = () => {
   };
 
   return (
-    <div>
-      <h1>Sintomas na Cabeça</h1>
-      <form>
-        <label>
-          <input
-            type="checkbox"
-            name="dor_de_cabeca"
-            checked={formValues.dor_de_cabeca}
-            onChange={handleInputChange}
-          />
-          Dor de cabeça
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="nausea"
-            checked={formValues.nausea}
-            onChange={handleInputChange}
-          />
-          Náusea
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="sensibilidade_a_luz"
-            checked={formValues.sensibilidade_a_luz}
-            onChange={handleInputChange}
-          />
-          Sensibilidade a Luz
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="tontura"
-            checked={formValues.tontura}
-            onChange={handleInputChange}
-          />
-          Tontura
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="visao_turva"
-            checked={formValues.visao_turva}
-            onChange={handleInputChange}
-          />
-          Visão turva
-        </label>
-        <Link to="/chest">
-          <Button type="submit">Próximo</Button>
-        </Link>
-      </form>
+    <div class="main-div">
+      <div class="box-div">
+        <h1>Sintomas na Cabeça</h1>
+        <form>
+          <label>
+            <input
+              type="checkbox"
+              name="dor_de_cabeca"
+              checked={formValues.dor_de_cabeca}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Dor de cabeça
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="nausea"
+              checked={formValues.nausea}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Náusea
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="sensibilidade_a_luz"
+              checked={formValues.sensibilidade_a_luz}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Sensibilidade a Luz
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="tontura"
+              checked={formValues.tontura}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Tontura
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="visao_turva"
+              checked={formValues.visao_turva}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Visão turva
+          </label>
+          <Link to="/chest">
+            <Button type="submit">Próximo</Button>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

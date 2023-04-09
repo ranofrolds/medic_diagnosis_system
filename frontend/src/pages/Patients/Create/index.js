@@ -26,46 +26,48 @@ export const Create = () => {
   };
 
   return (
-    <div>
-      <h1>Cadastro Paciente</h1>
-      <div class="login-div">
-        <form onSubmit={handleSubmit} action="#">
-          <div class="input-box">
-            <span class="icon"></span>
-            <input
-              type="text"
-              required
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-            />
-            <label>CPF</label>
-          </div>
+    <div class="main-div">
+      <div class="box-div">
+        <h1>Cadastro Paciente</h1>
+        <div class="login-div">
+          <form onSubmit={handleSubmit} action="#">
+            <div class="input-box">
+              <span class="icon"></span>
+              <input
+                type="text"
+                required
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+              />
+              <label>CPF</label>
+            </div>
 
-          <div class="input-box">
-            <span class="icon"></span>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label>Nome</label>
-          </div>
+            <div class="input-box">
+              <span class="icon"></span>
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label>Nome</label>
+            </div>
 
-          <div class="input-box">
-            <span class="icon"></span>
-            <input
-              type="number"
-              required
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-            <label>Idade</label>
-          </div>
-          <Link to="/head">
-            <Button>Cadastrar</Button>
-          </Link>
-        </form>
+            <div class="input-box">
+              <span class="icon"></span>
+              <input
+                type="number"
+                required
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+              <label>Idade</label>
+            </div>
+            <Link to="/head">
+              <Button>Cadastrar</Button>
+            </Link>
+          </form>
+        </div>
       </div>
     </div>
   );
