@@ -1,10 +1,10 @@
-POST http://localhost:8000/listar_sintomas
-Content-Type: application/json
+# POST http://localhost:8000/listar_sintomas
+# Content-Type: application/json
 
-{
-    "doenca":"herpes",
-    "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
-}
+# {
+#     "doenca":"herpes",
+#     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+# }
 
 POST http://localhost:8000/processar_diagnostico
 Content-Type: application/json
@@ -16,9 +16,9 @@ Content-Type: application/json
     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
 }
 
-POST http://localhost:8000/remover_paciente
-Content-Type: application/json
+# POST http://localhost:8000/remover_paciente
+# Content-Type: application/json
 
-{
-    "cpf":"12345678900",
-}
+# {
+#     "cpf":"12345678900",
+# }
