@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import "../../../styles/style.css";
 
 export const Intimate = () => {
@@ -48,7 +49,7 @@ export const Intimate = () => {
           Sangramento ao evacuar
         </label>
         <Link to="/result">
-          <button type="submit">Próximo</button>
+          <Button type="submit">Finalizar consulta</Button>
         </Link>
       </form>
     </div>

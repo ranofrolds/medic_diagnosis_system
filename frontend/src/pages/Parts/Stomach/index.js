@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 import "../../../styles/style.css";
 
 export const Stomach = () => {
@@ -38,7 +40,7 @@ export const Stomach = () => {
           Dor no estomago
         </label>
         <Link to="/intimate">
-          <button type="submit">Próximo</button>
+          <Button type="submit">Próximo</Button>
         </Link>
       </form>
     </div>

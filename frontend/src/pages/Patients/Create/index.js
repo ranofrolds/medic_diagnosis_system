@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import axiosInstance from "../../../instances/axiosInstances";
+import React, { useContext } from "react";
+import { ClientContext } from "../../../components/clientContext";
+import axiosInstance from "../../../components/axiosInstances";
+import Button from "react-bootstrap/Button";
+
 import "../../../styles/style.css";
 
 export const Create = () => {
-  const [cpf, setCpf] = useState("");
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const { cpf, setCpf, name, setName, age, setAge } = useContext(ClientContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +63,7 @@ export const Create = () => {
             <label>Idade</label>
           </div>
           <Link to="/head">
-            <button>Cadastrar</button>
+            <Button>Cadastrar</Button>
           </Link>
         </form>
       </div>
