@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axiosInstance from "../../../instances/axiosInstances";
+import axiosInstance from "../../../components/axiosInstances";
 import "../../../styles/style.css";
 
 export const Create = () => {
