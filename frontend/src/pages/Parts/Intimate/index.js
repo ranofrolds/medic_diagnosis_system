@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ClientProvider } from "../../../components/clientContext";
 import Button from "react-bootstrap/Button";
-import FinalizarConsulta from "../../../components/FinalizarConsulta";
 
 import "../../../styles/style.css";
 
@@ -22,7 +21,7 @@ export const Intimate = () => {
 
   // Função que será chamada ao clicar no botão "Finalizar consulta"
   const handleFinishConsult = () => {
-    FinalizarConsulta(ClientProvider);
+    console.log("Entrou");
   };
 
   return (
@@ -57,14 +56,16 @@ export const Intimate = () => {
             />
             <span>&nbsp;</span>Sangramento ao evacuar
           </label>
-          <Button
-            type="button"
-            className="btn-custom"
-            onClick={handleFinishConsult}
-          >
-            Finalizar consulta
-          </Button>
-          <Link to="/result">Resultado</Link>
+
+          <Link to="/result">
+            <Button
+              type="button"
+              className="btn-custom"
+              onClick={handleFinishConsult}
+            >
+              Finalizar consulta
+            </Button>
+          </Link>
         </form>
       </div>
     </div>
