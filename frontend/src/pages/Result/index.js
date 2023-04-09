@@ -8,14 +8,14 @@ export const Result = () => {
     <div class="main-div">
       <div class="box-div">
         <h1>Resultado</h1>
-        <p>
-          <h2>
-            O resultado do protótipo é apenas informativo, o paciente deve
-            consultar um médico para obter um diagnóstico correto e preciso
-          </h2>
-        </p>
+        <h2>
+          O resultado do protótipo é apenas informativo, o paciente deve
+          consultar um médico para obter um diagnóstico correto e preciso
+        </h2>
         <Link to="/">
-          <Button className="btn-custom">Voltar ao menu</Button>
+          <Button className="btn-custom" id="back-menu">
+            Voltar ao menu
+          </Button>
         </Link>
       </div>
     </div>

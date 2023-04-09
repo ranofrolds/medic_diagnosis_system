@@ -8,22 +8,27 @@ body {
 .main-div{
   height: 100vh;
   width: 100wh;
-  color: white;
+  color: #25a9b2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center !important;
-  background-color: #ffffff;
+  background-color: #25a9b2;
 }
 
 .main-div h1{
   text-align: center;
+  position: absolute;
+  top: 300px;
 }
 
 .main-div h2{
   font-size: 18px;
   text-align: center;
-  width: 400px;
+  width: 700px;
+  color: #000000;
+  position: absolute;
+  top: 375px;
 }
 
 .box-div{
@@ -34,7 +39,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #3dced7;
+  background-color: #ffffff;
 }
 
 .box-div a{
@@ -43,12 +48,13 @@ body {
 }
 
 .box-div a:hover{
-  text-decoration: dashed;
+  text-decoration: dashed !important;
 }
 
 label{
   padding: 5px;
   display: block !important;
+  color: #000000;
 }
 
 .btn-large{
@@ -63,8 +69,14 @@ label{
   font-size: 20px !important;
   background-color: #FF6600 !important;
   border: transparent !important;
+  position: absolute;
+  bottom: 300px;
+}
+
+#back-menu{
+  right: 45.5%;
 }
 
 #bem-vindo{
-  font-size: 64px;
+  font-size: 72px;
 }
