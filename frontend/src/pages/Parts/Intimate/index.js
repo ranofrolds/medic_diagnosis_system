@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import FinalizarConsulta from "../../../components/FinalizarConsulta";
+
 import "../../../styles/style.css";
 
 export const Intimate = () => {
@@ -15,6 +17,11 @@ export const Intimate = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setFormValues({ ...formValues, [name]: checked });
+  };
+
+  // Função que será chamada ao clicar no botão "Finalizar consulta"
+  const handleFinishConsult = () => {
+    FinalizarConsulta(formValues);
   };
 
   return (
@@ -49,9 +56,14 @@ export const Intimate = () => {
             />
             <span>&nbsp;</span>Sangramento ao evacuar
           </label>
-          <Link to="/result">
-            <Button type="submit" className="btn-custom">Finalizar consulta</Button>
-          </Link>
+          <Button
+            type="button"
+            className="btn-custom"
+            onClick={handleFinishConsult}
+          >
+            Finalizar consulta
+          </Button>
+          <Link to="/result">Resultado</Link>
         </form>
       </div>
     </div>
