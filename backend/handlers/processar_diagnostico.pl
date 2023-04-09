@@ -1,38 +1,10 @@
 :- module(processar_diagnostico, [processar_diagnostico_handler/1]).
 :- use_module(library(http/http_json)).
 :- use_module('../functions/calculoProbabilidades.pl').
+:- use_module('../functions/util.pl').
 
 :- use_module(library(readutil)).
-% Receber a string binaria
-% Converter para sintomas
-% encontrar as intercecções  e calcular as probabilidades
-% no caso uma funçao para cada doenca
 
-% Predicado para obter lista de sintomas a partir de um arquivo
-obter_sintomas(Sintomas) :-
-    read_file_to_string('./help_sintomas.txt', String, []),
-    split_string(String, "\n", "\r", Sintomas).
-
-sintomas_selecionados_por_indice(Array, Sintomas,TodosSintomas) :-
-    sintomas_por_indice(Array, 0, Sintomas,TodosSintomas).
-
-sintomas_por_indice([], _, [],TodosSintomas).
-sintomas_por_indice([0|T], Index, SintomasSelecionados,TodosSintomas) :-
-    NewIndex is Index + 1,
-    sintomas_por_indice(T, NewIndex, SintomasSelecionados,TodosSintomas).
-sintomas_por_indice([1|T], Index, [Sintoma|SintomasSelecionados],TodosSintomas) :-
-    nth0(Index,TodosSintomas, Sintoma),
-    NewIndex is Index + 1,
-    sintomas_por_indice(T, NewIndex, SintomasSelecionados,TodosSintomas).
-
-string_para_lista(String, Lista) :-
-    string_codes(String, CodigoChars),
-    separador(Sep),
-    split_string(CodigoChars, Sep, Sep, CodigoString),
-    maplist(atom_number, CodigoString, Lista).
-
-
-separador('|').
 
 salvar_paciente(Paciente) :-
     get_dict(cpf, Paciente, Cpf),
