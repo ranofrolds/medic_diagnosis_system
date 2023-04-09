@@ -16,6 +16,7 @@ export const Intimate = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setFormValues({ ...formValues, [name]: checked });
+    console.log(formValues);
   };
 
   // Função que será chamada ao clicar no botão "Finalizar consulta"
@@ -24,8 +25,8 @@ export const Intimate = () => {
   };
 
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Sintomas nas Regiões Íntimas</h1>
         <form>
           <label>

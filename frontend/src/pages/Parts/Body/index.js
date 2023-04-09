@@ -21,11 +21,12 @@ export const Body = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setFormValues({ ...formValues, [name]: checked });
+    console.log(formValues);
   };
 
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Sintomas no Corpo</h1>
         <form>
           <label>
@@ -110,7 +111,9 @@ export const Body = () => {
             <span>&nbsp;</span>Perda de pesa
           </label>
           <Link to="/stomach">
-            <Button type="submit" className="btn-custom">Próximo</Button>
+            <Button type="submit" className="btn-custom">
+              Próximo
+            </Button>
           </Link>
         </form>
       </div>

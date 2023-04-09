@@ -17,11 +17,12 @@ export const Chest = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setFormValues({ ...formValues, [name]: checked });
+    console.log(formValues);
   };
 
   return (
-    <div class="main-div">
-      <div class="box-div">
+    <div className="main-div">
+      <div className="box-div">
         <h1>Sintomas no Peito</h1>
         <form>
           <label>
@@ -61,7 +62,9 @@ export const Chest = () => {
             <span>&nbsp;</span>Tosse seca
           </label>
           <Link to="/body">
-            <Button type="submit" className="btn-custom">Próximo</Button>
+            <Button type="submit" className="btn-custom">
+              Próximo
+            </Button>
           </Link>
         </form>
       </div>
