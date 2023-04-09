@@ -64,7 +64,7 @@ export const Create = () => {
               <label>Idade</label>
             </div>
             <Link to="/head">
-              <Button>Cadastrar</Button>
+              <Button className="btn-custom">Cadastrar</Button>
             </Link>
           </form>
         </div>

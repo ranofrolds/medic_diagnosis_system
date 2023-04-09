@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center !important;
-  background-color: #e7fcfd;
+  background-color: #ffffff;
 }
 
 .main-div h1{
@@ -34,7 +34,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #28b9c2;
+  background-color: #3dced7;
+}
+
+.box-div a{
+  color: #FF6600;
+  text-decoration: none;
+}
+
+.box-div a:hover{
+  text-decoration: dashed;
 }
 
 label{
@@ -44,10 +53,17 @@ label{
 
 .btn-large{
   font-size: 28px !important;
+  background-color: #FF6600 !important;
+  border: transparent !important;
   width: 225px;
   height: 75px;
 }
 
+.btn-custom{
+  font-size: 20px !important;
+  background-color: #FF6600 !important;
+  border: transparent !important;
+}
 
 #bem-vindo{
   font-size: 64px;

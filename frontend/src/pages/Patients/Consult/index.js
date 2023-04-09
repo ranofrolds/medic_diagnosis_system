@@ -13,7 +13,7 @@ export const Consult = () => {
       <div class="box-div">
         <h1>Listagem Pacientes</h1>
         <div
-          className="modal show"
+          className="modal-show"
           style={{ display: "block", position: "initial" }}
         >
           <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -31,9 +31,7 @@ export const Consult = () => {
             </Modal.Footer>
           </Modal>
         </div>
-        <Button variant="primary" onClick={() => setShowModal(true)}>
-          {" "}
-          {/* adicionar botão para abrir o Modal */}
+        <Button className="btn-custom" variant="primary" onClick={() => setShowModal(true)}>
           Atualizar paciente
         </Button>
         <Link to="/">

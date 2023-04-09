@@ -61,7 +61,7 @@ export const Chest = () => {
             <span>&nbsp;</span>Tosse seca
           </label>
           <Link to="/body">
-            <Button type="submit">Próximo</Button>
+            <Button type="submit" className="btn-custom">Próximo</Button>
           </Link>
         </form>
       </div>

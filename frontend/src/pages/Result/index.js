@@ -15,7 +15,7 @@ export const Result = () => {
           </h2>
         </p>
         <Link to="/">
-          <Button>Voltar ao menu</Button>
+          <Button className="btn-custom">Voltar ao menu</Button>
         </Link>
       </div>
     </div>

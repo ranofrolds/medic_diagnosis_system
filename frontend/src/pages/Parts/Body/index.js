@@ -110,7 +110,7 @@ export const Body = () => {
             <span>&nbsp;</span>Perda de pesa
           </label>
           <Link to="/stomach">
-            <Button type="submit">Próximo</Button>
+            <Button type="submit" className="btn-custom">Próximo</Button>
           </Link>
         </form>
       </div>

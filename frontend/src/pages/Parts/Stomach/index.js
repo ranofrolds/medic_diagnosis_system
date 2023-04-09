@@ -41,7 +41,7 @@ export const Stomach = () => {
             <span>&nbsp;</span>Dor no estomago
           </label>
           <Link to="/intimate">
-            <Button type="submit">Próximo</Button>
+            <Button type="submit" className="btn-custom">Próximo</Button>
           </Link>
         </form>
       </div>

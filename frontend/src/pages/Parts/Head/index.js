@@ -71,7 +71,7 @@ export const Head = () => {
             <span>&nbsp;</span>Visão turva
           </label>
           <Link to="/chest">
-            <Button type="submit">Próximo</Button>
+            <Button type="submit" className="btn-custom">Próximo</Button>
           </Link>
         </form>
       </div>

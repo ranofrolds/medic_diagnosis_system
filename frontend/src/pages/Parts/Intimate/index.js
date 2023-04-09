@@ -50,7 +50,7 @@ export const Intimate = () => {
             <span>&nbsp;</span>Sangramento ao evacuar
           </label>
           <Link to="/result">
-            <Button type="submit">Finalizar consulta</Button>
+            <Button type="submit" className="btn-custom">Finalizar consulta</Button>
           </Link>
         </form>
       </div>
