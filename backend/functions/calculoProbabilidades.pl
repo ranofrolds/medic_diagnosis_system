@@ -11,9 +11,12 @@ extract_probabilidade((_, Probabilidade), Probabilidade).
 
 calcular_probabilidades_gerais_aux([], _, []).
 calcular_probabilidades_gerais_aux([(Doenca, Probabilidade) | T], SomaIndividuais, [(Doenca, ProbabilidadeGeral) | T1]) :-
-    ProbabilidadeGeral is Probabilidade / SomaIndividuais,
+    (SomaIndividuais =:= 0 ->
+        ProbabilidadeGeral is 0
+    ;
+        ProbabilidadeGeral is Probabilidade / SomaIndividuais
+    ),
     calcular_probabilidades_gerais_aux(T, SomaIndividuais, T1).
-
 calcular_probabilidades_individuais(Sintomas, ProbabilidadesIndividuais) :-
     findall((NomeDoenca, Probabilidade), calcular_probabilidade_doenca(Sintomas, NomeDoenca, Probabilidade), ProbabilidadesIndividuais).
 
@@ -23,7 +26,10 @@ calcular_probabilidade_doenca(Sintomas, NomeDoenca, Probabilidade) :-
     findall(S, sintoma(NomeDoenca, S), ListaSintomas),
     intersection(Sintomas, ListaSintomas, IntersecaoDoenca),
     length(IntersecaoDoenca, QtdSintomas),
-    Probabilidade is QtdSintomas * 0.33 * ProbEndemica.
+    (   length(IntersecaoDoenca, QtdSintomas)
+    ->  Probabilidade is QtdSintomas * 0.33 * ProbEndemica
+    ;   Probabilidade = 0
+    ).
 
 calcular_probabilidade(Sintomas, ProbabilidadesIndividuais, ProbabilidadesGerais) :-
     calcular_probabilidades_individuais(Sintomas, ProbabilidadesIndividuais),

@@ -2,48 +2,28 @@
 :- use_module(library(http/http_json)).
 :- use_module('../functions/calculoProbabilidades.pl').
 
+:- use_module(library(readutil)).
 % Receber a string binaria
 % Converter para sintomas
 % encontrar as intercecções  e calcular as probabilidades
 % no caso uma funçao para cada doenca
 
-% Predicado para ler arquivo e obter lista de sintomas
+% Predicado para obter lista de sintomas a partir de um arquivo
 obter_sintomas(Sintomas) :-
-    % Abrir arquivo para leitura
-    open('./help_sintomas.txt', read, Arquivo),
-    % Ler arquivo linha por linha e salvar em lista
-    read_lines(Arquivo, ListaSintomas),
-    % Fechar arquivo
-    close(Arquivo),
-    % Remover caracteres especiais das strings e converter para atom
-    maplist(remove_chars(['\n', '\r']), ListaSintomas, AtomSintomas),
-    % Converter lista de atom para lista de string
-    maplist(atom_string, AtomSintomas, Sintomas).
+    read_file_to_string('./help_sintomas.txt', String, []),
+    split_string(String, "\n", "\r", Sintomas).
 
-% Predicado para remover caracteres de uma string
-remove_chars(Chars, String, NovoString) :-
-    atom_chars(String, ListaChars),
-    exclude(memberchk(Chars), ListaChars, NovoListaChars),
-    atom_chars(NovoString, NovoListaChars).
+sintomas_selecionados_por_indice(Array, Sintomas,TodosSintomas) :-
+    sintomas_por_indice(Array, 0, Sintomas,TodosSintomas).
 
-% Predicado para ler arquivo linha por linha e salvar em lista
-read_lines(Stream, Lines) :-
-    read_line_to_codes(Stream, Line),
-    ( Line = end_of_file -> Lines = []
-    ; atom_string(LineAtom, Line), Lines = [LineAtom | RestLines],
-      read_lines(Stream, RestLines)
-    ).
-
-% Predicado para obter sintomas baseado no array de 0s e 1s
-obter_sintomas_por_array(Array, Sintomas) :-
-    obter_sintomas(TodosSintomas),
-    obter_sintomas_por_array_aux(Array, TodosSintomas, Sintomas).
-
-obter_sintomas_por_array_aux([], _, []).
-obter_sintomas_por_array_aux([1 | Resto], [Sintoma | RestoSintomas], [Sintoma | RestoSintomas]) :-
-    obter_sintomas_por_array_aux(Resto, RestoSintomas, RestoSintomas).
-obter_sintomas_por_array_aux([0 | Resto], [_ | RestoSintomas], Sintomas) :-
-    obter_sintomas_por_array_aux(Resto, RestoSintomas, Sintomas).
+sintomas_por_indice([], _, [],TodosSintomas).
+sintomas_por_indice([0|T], Index, SintomasSelecionados,TodosSintomas) :-
+    NewIndex is Index + 1,
+    sintomas_por_indice(T, NewIndex, SintomasSelecionados,TodosSintomas).
+sintomas_por_indice([1|T], Index, [Sintoma|SintomasSelecionados],TodosSintomas) :-
+    nth0(Index,TodosSintomas, Sintoma),
+    NewIndex is Index + 1,
+    sintomas_por_indice(T, NewIndex, SintomasSelecionados,TodosSintomas).
 
 string_para_lista(String, Lista) :-
     string_codes(String, CodigoChars),
@@ -51,28 +31,38 @@ string_para_lista(String, Lista) :-
     split_string(CodigoChars, Sep, Sep, CodigoString),
     maplist(atom_number, CodigoString, Lista).
 
+
 separador('|').
+
+salvar_paciente(Paciente) :-
+    get_dict(cpf, Paciente, Cpf),
+    get_dict(nome, Paciente, Nome),
+    get_dict(idade, Paciente, Idade),
+    get_dict(sintomas, Paciente, SintomasBin),
+    string_para_lista(SintomasBin, Sintomas),
+    atomic_list_concat(Sintomas, '|', SintomasStr),
+    format(atom(PacienteStr), '~w|~w|~w|#|~w|', [Cpf, Nome, Idade, SintomasStr]),
+    open('./database/pacientes.txt', append, Stream),
+    write(Stream, PacienteStr),
+    nl(Stream), % adiciona uma nova linha
+    close(Stream).
 
 processar_diagnostico_handler(Request) :-
     http_read_json_dict(Request, JsonIn),
-    get_dict(sintomas, JsonIn, Sintomas),
-    string_para_lista(Sintomas, Array),
-
-    calcular_probabilidade(SintomasString, ProbabilidadesIndividuais, ProbabilidadesGerais),
-    probabilidades_para_json(ProbabilidadesIndividuais, JsonOut),
+    get_dict(sintomas, JsonIn, SintomasBin),
+    string_para_lista(SintomasBin, Array),
+    obter_sintomas(TodosSintomas),
+    sintomas_selecionados_por_indice(Array, Sintomas, TodosSintomas),
+    maplist(atom_string, SintomasAtomo, Sintomas),
+    calcular_probabilidade(SintomasAtomo, ProbabilidadesIndividuais, ProbabilidadesGerais),
+    probabilidades_para_json(ProbabilidadesIndividuais, JsonOut1),
     probabilidades_para_json(ProbabilidadesGerais, JsonOut2),
-    merge(JsonOut1, JsonOut2, JsonOutFinal),
-    reply_json_dict(JsonOutFinal).
+    salvar_paciente(JsonIn),
+    reply_json_dict(_{probabilidadesIndividuais: JsonOut1, probabilidadesGerais: JsonOut2}).
 
-% Converte um array de probabilidades no formato [(doenca1, 0.4), (doenca2, 0.5)] em um dicionário JSON
-% no formato {"doenca1": 0.4, "doenca2": 0.5}
+
+probabilidade_para_par((Doenca, Probabilidade), Doenca-Probabilidade).
+
 probabilidades_para_json(Probabilidades, Json) :-
-    maplist(probabilidade_para_dict, Probabilidades, Dicionarios),
-    dict_pairs(Json, _, Dicionarios).
-
-% Converte um elemento do array de probabilidades no formato (Doenca, Probabilidade) em um dicionário
-% no formato {"nome": Doenca, "probabilidade": Probabilidade}
-probabilidade_para_dict((Doenca, Probabilidade), Dict) :-
-    Dict = _{nome: Doenca, probabilidade: Probabilidade}.
-
-
+    maplist(probabilidade_para_par, Probabilidades, Pares),
+    dict_pairs(Json, _, Pares).
