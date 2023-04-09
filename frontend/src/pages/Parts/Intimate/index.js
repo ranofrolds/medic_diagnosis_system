@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ClientProvider } from "../../../components/clientContext";
 import Button from "react-bootstrap/Button";
 
 import "../../../styles/style.css";

@@ -8,6 +8,12 @@ import "../../../styles/style.css";
 export const Create = () => {
   const { cpf, setCpf, name, setName, age, setAge } = useContext(ClientContext);
 
+  const handleInputChange = (event) => {
+    console.log(cpf);
+    console.log(name);
+    console.log(age);
+  };
+
   return (
     <div class="main-div">
       <div class="box-div">
@@ -21,7 +27,6 @@ export const Create = () => {
                 value={cpf}
                 onChange={(e) => {
                   setCpf(e.target.value);
-                  console.log(cpf);
                 }}
               />
               <label>CPF</label>
@@ -47,7 +52,9 @@ export const Create = () => {
               <label>Idade</label>
             </div>
             <Link to="/head">
-              <Button className="btn-custom">Cadastrar</Button>
+              <Button onClick={handleInputChange} className="btn-custom">
+                Cadastrar
+              </Button>
             </Link>
           </form>
         </div>
