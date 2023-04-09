@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ClientProvider } from "../../../components/clientContext";
 import Button from "react-bootstrap/Button";
+import FinalizarConsulta from "../../../components/FinalizarConsulta";
+
 import "../../../styles/style.css";
 
 export const Intimate = () => {
@@ -17,41 +20,53 @@ export const Intimate = () => {
     setFormValues({ ...formValues, [name]: checked });
   };
 
+  // Função que será chamada ao clicar no botão "Finalizar consulta"
+  const handleFinishConsult = () => {
+    FinalizarConsulta(ClientProvider);
+  };
+
   return (
-    <div>
-      <h1>Sintomas nas Regiões Íntimas</h1>
-      <form>
-        <label>
-          <input
-            type="checkbox"
-            name="coceira_anal"
-            checked={formValues.coceira_anal}
-            onChange={handleInputChange}
-          />
-          Coceira anal
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="dor_ao_evacuar"
-            checked={formValues.dor_ao_evacuar}
-            onChange={handleInputChange}
-          />
-          Dor ao evacuar
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="sangramento_ao_evacuar"
-            checked={formValues.sangramento_ao_evacuar}
-            onChange={handleInputChange}
-          />
-          Sangramento ao evacuar
-        </label>
-        <Link to="/result">
-          <Button type="submit">Finalizar consulta</Button>
-        </Link>
-      </form>
+    <div class="main-div">
+      <div class="box-div">
+        <h1>Sintomas nas Regiões Íntimas</h1>
+        <form>
+          <label>
+            <input
+              type="checkbox"
+              name="coceira_anal"
+              checked={formValues.coceira_anal}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Coceira anal
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="dor_ao_evacuar"
+              checked={formValues.dor_ao_evacuar}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Dor ao evacuar
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="sangramento_ao_evacuar"
+              checked={formValues.sangramento_ao_evacuar}
+              onChange={handleInputChange}
+            />
+            <span>&nbsp;</span>Sangramento ao evacuar
+          </label>
+          <Button
+            type="button"
+            className="btn-custom"
+            onClick={handleFinishConsult}
+          >
+            Finalizar consulta
+          </Button>
+          <Link to="/result">Resultado</Link>
+        </form>
+      </div>
     </div>
   );
 };
