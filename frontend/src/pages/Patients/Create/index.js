@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { ClientContext } from "../../../components/clientContext";
-import axiosInstance from "../../../components/axiosInstances";
 import Button from "react-bootstrap/Button";
 
 import "../../../styles/style.css";
@@ -9,41 +8,26 @@ import "../../../styles/style.css";
 export const Create = () => {
   const { cpf, setCpf, name, setName, age, setAge } = useContext(ClientContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axiosInstance
-      .post("/auth/signup", {
-        cpf: cpf,
-        name: name,
-        age: age,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div class="main-div">
       <div class="box-div">
         <h1>Cadastro Paciente</h1>
         <div class="login-div">
-          <form onSubmit={handleSubmit} action="#">
+          <form>
             <div class="input-box">
-              <span class="icon"></span>
               <input
                 type="text"
                 required
                 value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
+                onChange={(e) => {
+                  setCpf(e.target.value);
+                  console.log(cpf);
+                }}
               />
               <label>CPF</label>
             </div>
 
             <div class="input-box">
-              <span class="icon"></span>
               <input
                 type="text"
                 required
@@ -54,7 +38,6 @@ export const Create = () => {
             </div>
 
             <div class="input-box">
-              <span class="icon"></span>
               <input
                 type="number"
                 required
