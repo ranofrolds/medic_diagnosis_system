@@ -11,6 +11,10 @@ export default function Doenca(props) {
         <span>&nbsp;</span>
         <span>&nbsp;</span>
         <span>&nbsp;</span>
+        {props.chance}%
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
         <Button colorScheme="orange" variant="outline" size="xs">
           Ver mais
         </Button>
