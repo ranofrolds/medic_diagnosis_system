@@ -1,7 +1,7 @@
-:- module(meumodulo, [obter_sintomas/1, sintomas_selecionados_por_indice/3, string_para_lista/2]).
+:- module(meumodulo, [obter_sintomas/1, sintomas_selecionados_por_indice/3, string_para_lista/2, remove_last/2]).
 
 obter_sintomas(Sintomas) :-
-    read_file_to_string('./help_sintomas.txt', String, []),
+    read_file_to_string('../database/help_sintomas.txt', String, []),
     split_string(String, "\n", "\r", Sintomas).
 
 sintomas_selecionados_por_indice(Array, Sintomas,TodosSintomas) :-
@@ -24,3 +24,6 @@ string_para_lista(String, Lista) :-
 
 
 separador('|').
+
+remove_last([_], []).
+remove_last([X|Xs], [X|WithoutLast]) :- remove_last(Xs, WithoutLast).

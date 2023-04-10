@@ -9,7 +9,6 @@
 :- consult('./database/doencas.pl').
 
 % URL handlers.
-% :- http_handler('/buscar_cpf', buscar_cpf_handler, []).
 :- http_handler('/processar_diagnostico', processar_diagnostico_handler, []).
 :- http_handler('/listar_pacientes', listar_pacientes_handler, []).
 :- http_handler('/remover_paciente', remover_paciente_handler, []).
@@ -20,3 +19,4 @@ server(Port) :-
     format('Server running at http://localhost:~w~n', [Port]).
 
 :- initialization(server(8000)).
+
