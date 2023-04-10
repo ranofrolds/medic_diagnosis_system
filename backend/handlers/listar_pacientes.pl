@@ -2,6 +2,10 @@
 :- use_module(library(http/http_json)).
 :- use_module('../functions/readFileLines.pl').
 
+reply_header(Key, Value) :-
+    format('Content-type: text/plain~n'),
+    format('~w: ~w~n~n', [Key, Value]).
+
 listar_pacientes_handler(_Request, Reply) :-
     reply_header('Access-Control-Allow-Origin','*'),
     read_file('./database/pacientes.txt', Lines),
