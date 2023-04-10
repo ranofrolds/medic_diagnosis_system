@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import somarArray from "../../../components/concatenacaoDados";
+import axiosInstance from "../../../components/axiosInstances"
 
 import "../../../styles/style.css";
 
@@ -20,7 +21,15 @@ export const Intimate = () => {
   };
 
   const handleSubmit = (event) => {
-    somarArray(intimateValues);
+    const objeto=somarArray(intimateValues);
+    const url = 'http://localhost:8000/processar_diagnostico';
+    axiosInstance.post(url, objeto)
+      .then((resposta) => {
+        console.log('Resposta do servidor:', resposta.data);
+      })
+      .catch((erro) => {
+        console.error('Erro ao enviar objeto:', erro.message);
+      });
   };
 
   return (

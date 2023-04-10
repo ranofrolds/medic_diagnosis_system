@@ -4,9 +4,19 @@
 
 listar_pacientes_handler(_Request) :-
     read_file('./database/pacientes.txt', Lines),
-    
-    % reply_json_dict(_{array: Lines}).
-    format('Content-type: text/plain~n~n'),
-    format(Lines).
+    read_pacientes(Lines, Pacientes),
+    reply_json_dict(json{pacientes: Pacientes}).
 
+remove_last([_], []).
+remove_last([X|Xs], [X|WithoutLast]) :- remove_last(Xs, WithoutLast).
 
+read_pacientes([], []).
+read_pacientes([Line|Resto], [Paciente|ListaPacientes]) :-
+    (   Line \= ""
+    ->  split_string(Line, "|", "", [CPF, Nome, Idade,_|SintomasStr]),
+        maplist(atom_string, SintomasBool, SintomasStr),
+        remove_last(SintomasBool, SintomasBoolFinal),
+        Paciente = _{cpf:CPF, nome:Nome, idade:Idade, sintomas:SintomasBoolFinal},
+        read_pacientes(Resto, ListaPacientes)
+    ;   read_pacientes(Resto, ListaPacientes)
+    ).

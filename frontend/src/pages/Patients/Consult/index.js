@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import JanelaModal from "../../../components/JanelaModal";
 import { Link } from "react-router-dom";
+import axiosInstance from "../../../components/axiosInstances";
 
 import "../../../styles/style.css";
 
@@ -27,6 +28,16 @@ export const Consult = () => {
     setData(newArray);
 
     localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+
+    // const url = 'http://localhost:8000/remover_paciente';
+
+    // axiosInstance.post(url, cpfJson)
+    //   .then((resposta) => {
+    //     console.log('Resposta do servidor:', resposta.data);
+    //   })
+    //   .catch((erro) => {
+    //     console.error('Erro ao enviar objeto:', erro.message);
+    //   });
   };
 
   return (
