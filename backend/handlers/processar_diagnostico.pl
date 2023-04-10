@@ -27,8 +27,10 @@ processar_diagnostico_handler(Request) :-
     sintomas_selecionados_por_indice(Array, Sintomas, TodosSintomas),
     maplist(atom_string, SintomasAtomo, Sintomas),
     calcular_probabilidade(SintomasAtomo, ProbabilidadesIndividuais, ProbabilidadesGerais),
-    probabilidades_para_json(ProbabilidadesIndividuais, JsonOut1),
-    probabilidades_para_json(ProbabilidadesGerais, JsonOut2),
+    sort(0, @>=, ProbabilidadesIndividuais, ProbIndividuaisOrdenadas),
+    sort(0, @>=, ProbabilidadesGerais, ProbGeraisOrdenadas),
+    probabilidades_para_json(ProbIndividuaisOrdenadas, JsonOut1),
+    probabilidades_para_json(ProbGeraisOrdenadas, JsonOut2),
     salvar_paciente(JsonIn),
     reply_json_dict(_{probabilidadesIndividuais: JsonOut1, probabilidadesGerais: JsonOut2}).
 
