@@ -1,7 +1,6 @@
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/html_write)).
-:- use_module(library(http/http_headers)).
 :- use_module(handlers/buscar_cpf).
 :- use_module(handlers/processar_diagnostico).
 :- use_module(handlers/listar_pacientes).
@@ -16,38 +15,6 @@
 :- http_handler('/listar_pacientes', listar_pacientes_handler, []).
 :- http_handler('/remover_paciente', remover_paciente_handler, []).
 :- http_handler('/listar_sintomas', listar_sintomas_handler, []).
-
-% Manipulador de cabeçalho para permitir o CORS
-:- http_handler(root(.), cors_handler, [prefix]).
-
-cors_headers([
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization'
-]).
-
-cors_handler(Request) :-
-    (   memberchk(origin(Origin), Request) ->
-        cors_headers(Headers),
-        append(Headers, ['Access-Control-Allow-Origin': Origin], CorsHeaders)
-    ;   cors_headers(CorsHeaders)
-    ),
-    (   http_dispatch(Request) ->
-        true
-    ;   format('Content-type: text/plain~n~n'),
-        format('Not found~n'),
-        cors_reply(CorsHeaders)
-    ).
-
-cors_reply(Headers) :-
-    format('Content-type: text/plain~n'),
-    format('Access-Control-Allow-Origin: *~n'),
-    format('Access-Control-Allow-Methods: GET, POST, OPTIONS~n'),
-    format('Access-Control-Allow-Headers: Content-Type, Accept, Authorization~n'),
-    maplist(reply_header, Headers).
-
-reply_header(Key-Value) :-
-    format('~w: ~w~n', [Key, Value]).
 
 server(Port) :-
     http_server(http_dispatch, [port(Port)]),
