@@ -2,15 +2,11 @@
 :- use_module(library(http/http_json)).
 :- use_module('../functions/readFileLines.pl').
 
-reply_header(Key, Value) :-
-    format('Content-type: text/plain~n'),
-    format('~w: ~w~n~n', [Key, Value]).
 
-listar_pacientes_handler(_Request, Reply) :-
-    reply_header('Access-Control-Allow-Origin','*'),
+listar_pacientes_handler(_Request) :-
     read_file('./database/pacientes.txt', Lines),
     read_pacientes(Lines, Pacientes),
-    reply_json_dict(Reply,json{pacientes: Pacientes}).
+    reply_json_dict(json{pacientes: Pacientes}).
 
 remove_last([_], []).
 remove_last([X|Xs], [X|WithoutLast]) :- remove_last(Xs, WithoutLast).
