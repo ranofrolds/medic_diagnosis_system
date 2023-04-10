@@ -44,15 +44,16 @@ export const Consult = () => {
 
     localStorage.setItem("cad_cliente", JSON.stringify(newArray));
 
-    // const url = 'http://localhost:8000/remover_paciente';
+    const url = "/remover_paciente";
 
-    // axiosInstance.post(url, cpfJson)
-    //   .then((resposta) => {
-    //     console.log('Resposta do servidor:', resposta.data);
-    //   })
-    //   .catch((erro) => {
-    //     console.error('Erro ao enviar objeto:', erro.message);
-    //   });
+    axiosInstance
+      .post(url, cpf)
+      .then((resposta) => {
+        console.log("Resposta do servidor:", resposta.data);
+      })
+      .catch((erro) => {
+        console.error("Erro ao enviar objeto:", erro.message);
+      });
   };
 
   return (
