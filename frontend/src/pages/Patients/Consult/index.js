@@ -1,45 +1,99 @@
-import { Link } from "react-router-dom";
+import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  useDisclosure,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+} from "@chakra-ui/react";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import JanelaModal from "../../../components/JanelaModal";
+import { Link } from "react-router-dom";
 
 import "../../../styles/style.css";
 
 export const Consult = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [data, setData] = useState([]);
+  const [dataEdit, setDataEdit] = useState({});
+
+  const handleRemove = (cpf) => {
+    const newArray = data.filter((item) => item.cpf !== cpf);
+
+    setData(newArray);
+
+    localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+  };
 
   return (
     <div className="main-div">
       <div className="box-div">
-        <h1>Listagem Pacientes</h1>
-        <div
-          className="modal-show"
-          style={{ display: "block", position: "initial" }}
-        >
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title>Atualização de paciente</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p>Novo nome: </p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={() => setShowModal(false)}>
-                Sair
-              </Button>{" "}
-              <Button variant="primary">Salvar alterações</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        <Box overflowY="auto" height="100%">
+          <Table mt="6">
+            <Thead>
+              <Tr>
+                <Th maxW={700} fontSize="28px">
+                  CPF
+                </Th>
+                <Th maxW={700} fontSize="28px">
+                  Nome
+                </Th>
+                <Th maxW={700} fontSize="28px">
+                  Idade
+                </Th>
+                <Th p={0}></Th>
+                <Th p={0}></Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {data.map(({ name, email }, index) => (
+                <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
+                  <Td maxW={100}>{name}</Td>
+                  <Td maxW={100}>{email}</Td>
+                  <Td p={0}>
+                    <EditIcon
+                      fontSize={20}
+                      onClick={() => [
+                        setDataEdit({ name, email, index }),
+                        onOpen(),
+                      ]}
+                    />
+                  </Td>
+                  <Td p={0}>
+                    <DeleteIcon
+                      fontSize={20}
+                      onClick={() => handleRemove(email)}
+                    />
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </Box>
+
+        {isOpen && (
+          <JanelaModal
+            isOpen={isOpen}
+            onClose={onClose}
+            data={data}
+            setData={setData}
+            dataEdit={dataEdit}
+            setDataEdit={setDataEdit}
+          />
+        )}
         <Button
-          className="btn-custom"
-          variant="primary"
-          onClick={() => setShowModal(true)}
+          colorScheme="orange"
+          onClick={() => [setDataEdit({}), onOpen()]}
+          id="botao-cadastro"
         >
-          Atualizar paciente
+          NOVO CADASTRO
         </Button>
         <Link to="/">
-          <p id="back-menu">Voltar ao menu principal</p>
+          <Button id="back-menu">Voltar ao menu principal</Button>
         </Link>
       </div>
     </div>

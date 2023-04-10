@@ -116,10 +116,15 @@ label{
   font-size: 72px;
 }
 
-#back-menu{
+#botao-cadastro{
   position: absolute;
   bottom: 25%;
+}
 
+#back-menu{
+  position: absolute;
+  bottom: 20%;
+  left: 44.5%;
 }
 
 #consult{
