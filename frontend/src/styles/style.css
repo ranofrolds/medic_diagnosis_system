@@ -22,15 +22,6 @@ body {
   top: 30%;
 }
 
-.main-div h2{
-  font-size: 18px;
-  text-align: center;
-  width: 700px;
-  color: #000000;
-  position: absolute;
-  top: 375px;
-}
-
 .box-div{
   height: 700px;
   width: 1190px;
@@ -121,14 +112,65 @@ label{
   bottom: 25%;
 }
 
+#resultado{
+  display: absolute;
+  top: 20% !important;
+  font-size: 60px;
+}
+
+.resultado-div{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  color: #000000;
+}
+
+.resultado-div h3{
+  position: relative;
+  left: 25%;
+}
+
+.resultado-geral{
+  border: red solid 1px;
+  height: 400px;
+  width: 450px;
+  margin-left: 25%;
+}
+
+.resultado-individual{
+  border: blue solid 1px;
+  height: 400px;
+  width: 450px;
+  margin-left: 25%;
+}
+
+#informacao{
+  font-size: 20px;
+  text-align: center;
+  width: 900px;
+  color: #000000;
+  position: absolute;
+  bottom: 22%;
+}
+
 #back-menu{
   position: absolute;
-  bottom: 20%;
-  left: 44.5%;
+  bottom: 17%;
+  left: 46%;
+}
+
+#back-menu-principal{
+  bottom: 100%;
 }
 
 #consult{
   position: absolute;
   left: 46%;
-  bottom: 40%;
+  bottom: 38%;
 }
+
+.doenca-div{
+  font-size: 24px;
+  margin-left: 30%;
+  margin-top: 30px;
+}
+

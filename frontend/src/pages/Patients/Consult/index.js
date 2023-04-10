@@ -121,7 +121,7 @@ export const Consult = () => {
           NOVO CADASTRO
         </Button>
         <Link to="/">
-          <Button id="back-menu">Voltar ao menu principal</Button>
+          <Button id="back-menu-principal">Voltar ao menu principal</Button>
         </Link>
       </div>
     </div>
