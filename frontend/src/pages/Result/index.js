@@ -25,11 +25,13 @@ export const Result = () => {
           (item) => item[0] === "probabilidadesGerais"
         )[1];
         setArrayGeral(Object.entries(probabilidadesGerais));
+        setArrayGeral(arrayGeral.sort(([, v1], [, v2]) => v2 - v1));
 
         const probabilidadesIndividuais = arrayDoencas.find(
           (item) => item[0] === "probabilidadesIndividuais"
         )[1];
         setArrayIndividual(Object.entries(probabilidadesIndividuais));
+        setArrayIndividual(arrayIndividual.sort(([, v1], [, v2]) => v2 - v1));
       })
       .catch((erro) => {
         console.error("Erro ao enviar objeto:", erro.message);
