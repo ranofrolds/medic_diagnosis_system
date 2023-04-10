@@ -23,20 +23,18 @@ export const Consult = () => {
   const [dataEdit, setDataEdit] = useState({});
   const [pacientes, setPacientes] = useState([]);
 
-  const url = "/listar_pacientes";
-  axiosInstance
-    .get(url, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-    .then((resposta) => {
-      setPacientes(resposta.data);
-      console.log(pacientes);
-    })
-    .catch((erro) => {
-      console.error("Erro GET:", erro.message);
-    });
+  const listarPacientes = () => {
+    const url = "/listar_pacientes";
+    axiosInstance
+      .get(url)
+      .then((resposta) => {
+        setPacientes(resposta.data);
+        console.log(pacientes);
+      })
+      .catch((erro) => {
+        console.error("Erro GET:", erro.message);
+      });
+  };
 
   const handleRemove = (cpf) => {
     console.log("Valor CPF: ", cpf);

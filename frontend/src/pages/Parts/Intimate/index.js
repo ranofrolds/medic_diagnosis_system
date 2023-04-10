@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import somarArray from "../../../components/concatenacaoDados";
-import axiosInstance from "../../../components/axiosInstances"
+import axiosInstance from "../../../components/axiosInstances";
+import formatarDados from "../../../components/formatarDados";
 
 import "../../../styles/style.css";
 
@@ -21,14 +22,16 @@ export const Intimate = () => {
   };
 
   const handleSubmit = (event) => {
-    const objeto=somarArray(intimateValues);
-    const url = 'http://localhost:8000/processar_diagnostico';
-    axiosInstance.post(url, objeto)
+    const aux = somarArray(intimateValues);
+    const objeto = formatarDados(aux);
+    const url = "http://localhost:8000/processar_diagnostico";
+    axiosInstance
+      .post(url, objeto)
       .then((resposta) => {
-        console.log('Resposta do servidor:', resposta.data);
+        console.log("Resposta do servidor:", resposta.data);
       })
       .catch((erro) => {
-        console.error('Erro ao enviar objeto:', erro.message);
+        console.error("Erro ao enviar objeto:", erro.message);
       });
   };
 
