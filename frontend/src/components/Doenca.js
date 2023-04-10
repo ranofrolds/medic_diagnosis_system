@@ -1,8 +1,11 @@
 import { Button } from "@chakra-ui/react";
+import SintomasModal from "../components/SintomasModal";
+import { useDisclosure } from "@chakra-ui/react";
 
 import "../styles/style.css";
 
 export default function Doenca(props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div className="doenca-div">
       <p>
@@ -11,13 +14,18 @@ export default function Doenca(props) {
         <span>&nbsp;</span>
         <span>&nbsp;</span>
         <span>&nbsp;</span>
-        {props.chance}%
+        {props.chance}%<span>&nbsp;</span>
         <span>&nbsp;</span>
         <span>&nbsp;</span>
-        <span>&nbsp;</span>
-        <Button colorScheme="orange" variant="outline" size="xs">
+        <Button
+          colorScheme="orange"
+          variant="outline"
+          size="xs"
+          onClick={() => [onOpen()]}
+        >
           Ver mais
         </Button>
+        {isOpen && <SintomasModal isOpen={isOpen} onClose={onClose} />}
       </p>
     </div>
   );
