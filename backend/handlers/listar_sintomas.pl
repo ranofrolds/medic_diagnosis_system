@@ -11,9 +11,11 @@ analisar_sintomas_aux([Sintoma|Resto], TodosSintomas, NaoApresentadosAtualizada)
     ;  analisar_sintomas_aux(Resto, TodosSintomas, NaoApresentadosAtualizada)
     ).
 
-analisar_sintomas(NaoApresentados, Sintomas, NomeDoenca) :-
+analisar_sintomas(NaoApresentados, Sintomas, NomeDoenca, SintomasIntersecao) :-
     findall(S, sintoma(NomeDoenca, S), TodosSintomas),
-    analisar_sintomas_aux(Sintomas, TodosSintomas,NaoApresentados).
+    analisar_sintomas_aux(Sintomas, TodosSintomas,NaoApresentados),
+    intersection(Sintomas,TodosSintomas,SintomasIntersecao).
+    
 
 listar_sintomas_handler(Request) :-
     http_read_json_dict(Request, JsonIn),
@@ -24,8 +26,8 @@ listar_sintomas_handler(Request) :-
     obter_sintomas(TodosSintomas),
     sintomas_selecionados_por_indice(Array, Sintomas, TodosSintomas),
     maplist(atom_string, SintomasAtomo, Sintomas),
-    analisar_sintomas(NaoApresentados, SintomasAtomo,DoencaAtom),
-    sintomas_apresentados_json(SintomasAtomo, SintomasApresentadosJson),
+    analisar_sintomas(NaoApresentados, SintomasAtomo,DoencaAtom,SintomasIntersecao),
+    sintomas_apresentados_json(SintomasIntersecao, SintomasApresentadosJson),
     sintomas_nao_apresentados_json(NaoApresentados, SintomasNaoApresentadosJson),
     dict_create(JsonOut, _, 
         [sintomasApresentados=SintomasApresentadosJson,

@@ -6,15 +6,15 @@
 #     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
 # }
 
-POST http://localhost:8000/processar_diagnostico
-Content-Type: application/json
+# POST http://localhost:8000/processar_diagnostico
+# Content-Type: application/json
 
-{
-    "cpf":"12345378900",
-    "nome": "Pedro",
-    "idade": 25,
-    "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
-}
+# {
+#     "cpf":"33345378900",
+#     "nome": "P3dro",
+#     "idade": 225,
+#     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+# }
 
 # POST http://localhost:8000/remover_paciente
 # Content-Type: application/json
