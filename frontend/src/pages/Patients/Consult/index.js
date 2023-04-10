@@ -21,6 +21,16 @@ export const Consult = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
+  const [pacientes, setPacientes] = useState([]);
+
+  const url = 'http://localhost:8000/listar_paciente';
+  axiosInstance.get(url).then((resposta)=>{
+    setPacientes(resposta.data);
+    console.log(pacientes);
+  }).catch((erro) => {
+        console.error('Erro GET:', erro.message);
+      });
+  };
 
   const handleRemove = (cpf) => {
     const newArray = data.filter((item) => item.cpf !== cpf);
