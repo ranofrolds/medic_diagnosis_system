@@ -1,7 +1,6 @@
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/html_write)).
-:- use_module(handlers/buscar_cpf).
 :- use_module(handlers/processar_diagnostico).
 :- use_module(handlers/listar_pacientes).
 :- use_module(handlers/listar_sintomas).
