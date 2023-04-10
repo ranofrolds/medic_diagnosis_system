@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import somarArray from "../../../components/concatenacaoDados";
 
 import "../../../styles/style.css";
 
@@ -17,7 +18,10 @@ export const Head = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setHeadValues({ ...headValues, [name]: checked });
-    console.log(headValues);
+  };
+
+  const handleSubmit = (event) => {
+    somarArray(headValues);
   };
 
   return (
@@ -71,11 +75,7 @@ export const Head = () => {
             <span>&nbsp;</span>Visão turva
           </label>
           <Link to="/chest">
-            <Button
-              onClick={handleInputChange}
-              type="submit"
-              className="btn-custom"
-            >
+            <Button onClick={handleSubmit} type="submit" className="btn-custom">
               Próximo
             </Button>
           </Link>

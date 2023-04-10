@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import somarArray from "../../../components/concatenacaoDados";
 
 import "../../../styles/style.css";
 
@@ -16,7 +17,10 @@ export const Intimate = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setIntimateValues({ ...intimateValues, [name]: checked });
-    console.log(intimateValues);
+  };
+
+  const handleSubmit = (event) => {
+    somarArray(intimateValues);
   };
 
   return (
@@ -53,11 +57,7 @@ export const Intimate = () => {
           </label>
 
           <Link to="/result">
-            <Button
-              type="button"
-              className="btn-custom"
-              onClick={handleInputChange}
-            >
+            <Button type="button" className="btn-custom" onClick={handleSubmit}>
               Finalizar consulta
             </Button>
           </Link>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import somarArray from "../../../components/concatenacaoDados";
 
 import "../../../styles/style.css";
 
@@ -21,7 +22,10 @@ export const Body = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setBodyValues({ ...bodyValues, [name]: checked });
-    console.log(bodyValues);
+  };
+
+  const handleSubmit = (event) => {
+    somarArray(bodyValues);
   };
 
   return (
@@ -111,7 +115,7 @@ export const Body = () => {
             <span>&nbsp;</span>Perda de pesa
           </label>
           <Link to="/stomach">
-            <Button onClick={handleInputChange} type="submit" className="btn-custom">
+            <Button onClick={handleSubmit} type="submit" className="btn-custom">
               Próximo
             </Button>
           </Link>

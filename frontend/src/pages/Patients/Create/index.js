@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import somarArray from "../../../components/concatenacaoDados"
 import Button from "react-bootstrap/Button";
 
 import "../../../styles/style.css";
@@ -9,10 +10,10 @@ export const Create = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
-  const handleInputChange = (event) => {
-    console.log(cpf);
-    console.log(name);
-    console.log(age);
+  const handleSubmit = (event) => {
+    somarArray(cpf);
+    somarArray(name);
+    somarArray(age);
   };
 
   return (
@@ -53,7 +54,7 @@ export const Create = () => {
               <label>Idade</label>
             </div>
             <Link to="/head">
-              <Button onClick={handleInputChange} className="btn-custom">
+              <Button onClick={handleSubmit} className="btn-custom">
                 Cadastrar
               </Button>
             </Link>

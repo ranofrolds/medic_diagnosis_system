@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import somarArray from "../../../components/concatenacaoDados";
 
 import "../../../styles/style.css";
 
@@ -15,7 +16,10 @@ export const Stomach = () => {
   const handleInputChange = (event) => {
     const { name, checked } = event.target;
     setStomachValues({ ...stomachValues, [name]: checked });
-    console.log(stomachValues);
+  };
+
+  const handleSubmit = (event) => {
+    somarArray(stomachValues);
   };
 
   return (
@@ -42,11 +46,7 @@ export const Stomach = () => {
             <span>&nbsp;</span>Dor no estomago
           </label>
           <Link to="/intimate">
-            <Button
-              onClick={handleInputChange}
-              type="submit"
-              className="btn-custom"
-            >
+            <Button onClick={handleSubmit} type="submit" className="btn-custom">
               Próximo
             </Button>
           </Link>
