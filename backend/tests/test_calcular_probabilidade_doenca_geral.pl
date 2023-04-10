@@ -1,3 +1,5 @@
+:- use_module('../functions/calculoProbabilidades.pl').
+
 :- begin_tests(calcular_probabilidades_gerais).
 
 

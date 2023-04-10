@@ -1,3 +1,5 @@
+:- use_module('../functions/analisarSintomas.pl').
+
 :- begin_tests(analisar_sintomas_aux).
 
 % analisar_sintomas_aux([], NaoApresentados, NaoApresentados).

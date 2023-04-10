@@ -1,3 +1,5 @@
+:- use_module('../functions/calculoProbabilidades.pl').
+
 :- begin_tests(calcula_probabilidade_doenca).
 
 % calcular_probabilidade_doenca(Sintomas, NomeDoenca, Probabilidade) :-
