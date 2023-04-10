@@ -24,6 +24,7 @@ export const Intimate = () => {
   const handleSubmit = (event) => {
     const aux = somarArray(intimateValues);
     const objeto = formatarDados(aux);
+    console.log(objeto);
     const url = "http://localhost:8000/processar_diagnostico";
     axiosInstance
       .post(url, objeto)
