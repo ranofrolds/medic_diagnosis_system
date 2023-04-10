@@ -1,11 +1,15 @@
 :- module(listar_pacientes, [listar_pacientes_handler/1]).
 :- use_module(library(http/http_json)).
 :- use_module('../functions/readFileLines.pl').
+:- use_module(library(http/http_cors)).
 
+
+:- set_setting(http:cors, [*]).
 
 listar_pacientes_handler(_Request) :-
     read_file('./database/pacientes.txt', Lines),
     read_pacientes(Lines, Pacientes),
+    cors_enable,
     reply_json_dict(json{pacientes: Pacientes}).
 
 remove_last([_], []).
