@@ -2,9 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import somarArray from "../../../components/concatenacaoDados";
-import axiosInstance from "../../../components/axiosInstances";
-import formatarDados from "../../../components/formatarDados";
-import diagnosticoPaciente from "../../../components/diagnosticoPaciente";
 
 import "../../../styles/style.css";
 
@@ -23,19 +20,7 @@ export const Intimate = () => {
   };
 
   const handleSubmit = (event) => {
-    const aux = somarArray(intimateValues);
-    const objeto = formatarDados(aux);
-    console.log(objeto);
-    const url = "/processar_diagnostico";
-    axiosInstance
-      .post(url, objeto)
-      .then((resposta) => {
-        console.log("Resposta do servidor:", resposta.data);
-        diagnosticoPaciente(resposta.data);
-      })
-      .catch((erro) => {
-        console.error("Erro ao enviar objeto:", erro.message);
-      });
+    somarArray(intimateValues);
   };
 
   return (

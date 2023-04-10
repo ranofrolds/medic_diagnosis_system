@@ -130,14 +130,14 @@ label{
 }
 
 .resultado-geral{
-  border: red solid 1px;
+  /*border: red solid 1px;*/
   height: 400px;
   width: 450px;
   margin-left: 25%;
 }
 
 .resultado-individual{
-  border: blue solid 1px;
+  /*border: blue solid 1px;*/
   height: 400px;
   width: 450px;
   margin-left: 25%;
