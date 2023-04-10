@@ -41,6 +41,9 @@ cors_handler(Request) :-
 
 cors_reply(Headers) :-
     format('Content-type: text/plain~n'),
+    format('Access-Control-Allow-Origin: *~n'),
+    format('Access-Control-Allow-Methods: GET, POST, OPTIONS~n'),
+    format('Access-Control-Allow-Headers: Content-Type, Accept, Authorization~n'),
     maplist(reply_header, Headers).
 
 reply_header(Key-Value) :-
