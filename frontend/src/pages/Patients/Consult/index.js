@@ -24,13 +24,14 @@ export const Consult = () => {
   const [pacientes, setPacientes] = useState([]);
 
   const url = 'http://localhost:8000/listar_paciente';
-  axiosInstance.get(url).then((resposta)=>{
+  axiosInstance.get(url)
+  .then((resposta)=>{
     setPacientes(resposta.data);
     console.log(pacientes);
-  }).catch((erro) => {
+  })
+  .catch((erro) => {
         console.error('Erro GET:', erro.message);
-      });
-  };
+   });
 
   const handleRemove = (cpf) => {
     const newArray = data.filter((item) => item.cpf !== cpf);
