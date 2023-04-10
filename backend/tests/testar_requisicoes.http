@@ -10,8 +10,8 @@ POST http://localhost:8000/processar_diagnostico
 Content-Type: application/json
 
 {
-    "cpf":"14145378900",
-    "nome": "Zeca",
+    "cpf":"112311111",
+    "nome": "edson",
     "idade": 35,
     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
 }
