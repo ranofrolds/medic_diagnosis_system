@@ -23,17 +23,23 @@ export const Consult = () => {
   const [dataEdit, setDataEdit] = useState({});
   const [pacientes, setPacientes] = useState([]);
 
-  const url = '/listar_pacientes';
-  axiosInstance.get(url)
-  .then((resposta)=>{
-    setPacientes(resposta.data);
-    console.log(pacientes);
-  })
-  .catch((erro) => {
-        console.error('Erro GET:', erro.message);
-   });
+  const url = "/listar_pacientes";
+  axiosInstance
+    .get(url, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+    .then((resposta) => {
+      setPacientes(resposta.data);
+      console.log(pacientes);
+    })
+    .catch((erro) => {
+      console.error("Erro GET:", erro.message);
+    });
 
   const handleRemove = (cpf) => {
+    console.log("Valor CPF: ", cpf);
     const newArray = data.filter((item) => item.cpf !== cpf);
 
     setData(newArray);
@@ -72,15 +78,16 @@ export const Consult = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ name, email }, index) => (
+              {data.map(({ cpf, name, age }, index) => (
                 <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
-                  <Td maxW={100}>{name}</Td>
-                  <Td maxW={100}>{email}</Td>
+                  <Td maxW={300}>{cpf}</Td>
+                  <Td maxW={300}>{name}</Td>
+                  <Td maxW={300}>{age}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, email, index }),
+                        setDataEdit({ cpf, name, age, index }),
                         onOpen(),
                       ]}
                     />
@@ -88,7 +95,7 @@ export const Consult = () => {
                   <Td p={0}>
                     <DeleteIcon
                       fontSize={20}
-                      onClick={() => handleRemove(email)}
+                      onClick={() => handleRemove(cpf)}
                     />
                   </Td>
                 </Tr>
