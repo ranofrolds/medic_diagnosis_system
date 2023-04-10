@@ -23,7 +23,7 @@ export const Consult = () => {
   const [dataEdit, setDataEdit] = useState({});
   const [pacientes, setPacientes] = useState([]);
 
-  const url = 'http://localhost:8000/listar_paciente';
+  const url = '/listar_pacientes';
   axiosInstance.get(url)
   .then((resposta)=>{
     setPacientes(resposta.data);
