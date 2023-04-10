@@ -12,7 +12,6 @@
 %     ;   Probabilidade = 0
 %     ).
 
-
 test(probabilidade_enxaqueca) :-
     calcular_probabilidade_doenca([dor_de_cabeca, sensibilidade_a_luz], enxaqueca, Probabilidade),
     assertion(Probabilidade == 0.88).
