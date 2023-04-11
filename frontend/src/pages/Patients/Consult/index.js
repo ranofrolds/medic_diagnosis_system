@@ -56,6 +56,11 @@ export const Consult = () => {
     listarPacientes();
   }, []);
 
+  const handleModalClose = () => {
+    onClose();
+    window.location.reload();
+  };
+
   return (
     <div className="main-div">
       <div className="box-div">
@@ -106,7 +111,7 @@ export const Consult = () => {
         {isOpen && (
           <JanelaModal
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleModalClose}
             data={data}
             setData={setData}
             dataEdit={dataEdit}
