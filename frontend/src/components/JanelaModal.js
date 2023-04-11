@@ -12,6 +12,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import axiosInstance from "./axiosInstances";
 
 const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [cpf, setCpf] = useState(dataEdit.cpf || "");
@@ -52,13 +53,31 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       ? [...(data ? data : []), { cpf, name }]
       : [...(data ? data : [])];
 
-    localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
+    const obj = {
+      cpf:"",
+      nome: "",
+      idade: 0,
+      sintomas: ""
+    };
+    
+    axiosInstance.post('/atualizar_paciente', obj)
+    .then((resposta) => {
+      console.log(resposta);
+    })
+    .catch((erro) => {
+      console.error("Erro GET:", erro.message);
+    });
 
     setData(newDataArray);
+
 
     onClose();
   };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>

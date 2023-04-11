@@ -4,6 +4,7 @@
 :- use_module(handlers/processar_diagnostico).
 :- use_module(handlers/listar_pacientes).
 :- use_module(handlers/listar_sintomas).
+:- use_module(handlers/atualizar_paciente).
 :- use_module(handlers/remover_paciente).
 
 :- consult('./database/doencas.pl').
@@ -13,6 +14,7 @@
 :- http_handler('/listar_pacientes', listar_pacientes_handler, []).
 :- http_handler('/remover_paciente', remover_paciente_handler, []).
 :- http_handler('/listar_sintomas', listar_sintomas_handler, []).
+:- http_handler('/atualizar_paciente', atualizar_paciente_handler, []).
 
 server(Port) :-
     http_server(http_dispatch, [port(Port)]),
