@@ -76,7 +76,7 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
         console.log(resposta);
       })
       .catch((erro) => {
-        console.error("Erro GET:", erro.message);
+        console.error("Erro POST:", erro.message);
       });
   
     onClose();
