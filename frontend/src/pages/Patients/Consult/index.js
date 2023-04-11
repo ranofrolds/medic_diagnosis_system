@@ -38,15 +38,12 @@ export const Consult = () => {
   const handleRemove = (cpf) => {
     console.log("Valor CPF: ", cpf);
     const newArray = data.filter((item) => item.cpf !== cpf);
-
     setData(newArray);
 
-    localStorage.setItem("cad_cliente", JSON.stringify(newArray));
-
     const url = "/remover_paciente";
-
+    const cpfJson = { cpf: cpf };
     axiosInstance
-      .post(url, cpf)
+      .post(url, cpfJson)
       .then((resposta) => {
         console.log("Resposta do servidor:", resposta.data);
       })
