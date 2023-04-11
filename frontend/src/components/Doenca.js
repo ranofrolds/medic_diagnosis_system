@@ -6,6 +6,7 @@ import "../styles/style.css";
 
 export default function Doenca(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <div className="doenca-div">
       <p>
@@ -13,9 +14,7 @@ export default function Doenca(props) {
         {props.nome}
         <span>&nbsp;</span>
         <span>&nbsp;</span>
-        <span>&nbsp;</span>
         {props.chance}%<span>&nbsp;</span>
-        <span>&nbsp;</span>
         <span>&nbsp;</span>
         <Button
           colorScheme="orange"
@@ -25,7 +24,14 @@ export default function Doenca(props) {
         >
           Ver mais
         </Button>
-        {isOpen && <SintomasModal isOpen={isOpen} onClose={onClose} />}
+        {isOpen && (
+          <SintomasModal
+            isOpen={isOpen}
+            onClose={onClose}
+            nome={props.nome}
+            sintomas={props.sintomas}
+          />
+        )}
       </p>
     </div>
   );

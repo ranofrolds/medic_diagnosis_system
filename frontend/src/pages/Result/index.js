@@ -11,10 +11,12 @@ import "../../styles/style.css";
 export const Result = () => {
   const [arrayGeral, setArrayGeral] = useState([]);
   const [arrayIndividual, setArrayIndividual] = useState([]);
+  const [sintomas, setSintomas] = useState();
 
   useEffect(() => {
     const aux = somarArray("");
     const objeto = formatarDados(aux);
+    setSintomas(objeto.sintomas);
     const url = "/processar_diagnostico";
     axiosInstance
       .post(url, objeto)
@@ -24,12 +26,18 @@ export const Result = () => {
         const probabilidadesGerais = arrayDoencas.find(
           (item) => item[0] === "probabilidadesGerais"
         )[1];
-        setArrayGeral(Object.entries(probabilidadesGerais).sort(([, v1], [, v2]) => v2 - v1));
+        setArrayGeral(
+          Object.entries(probabilidadesGerais).sort(([, v1], [, v2]) => v2 - v1)
+        );
 
         const probabilidadesIndividuais = arrayDoencas.find(
           (item) => item[0] === "probabilidadesIndividuais"
         )[1];
-        setArrayIndividual(Object.entries(probabilidadesIndividuais).sort(([, v1], [, v2]) => v2 - v1));
+        setArrayIndividual(
+          Object.entries(probabilidadesIndividuais).sort(
+            ([, v1], [, v2]) => v2 - v1
+          )
+        );
       })
       .catch((erro) => {
         console.error("Erro ao enviar objeto:", erro.message);
@@ -53,7 +61,8 @@ export const Result = () => {
                 key={index}
                 numero={`${index + 1}.`}
                 nome={arrayGeral[index][0]}
-                chance={(arrayGeral[index][1] * 100).toFixed(0)}
+                chance={(arrayGeral[index][1] * 100).toFixed(1)}
+                sintomas={sintomas}
               />
             ))}
           </div>
@@ -64,7 +73,8 @@ export const Result = () => {
                 key={index}
                 numero={`${index + 1}.`}
                 nome={arrayIndividual[index][0]}
-                chance={(arrayIndividual[index][1] * 100).toFixed(0)}
+                chance={(arrayIndividual[index][1] * 100).toFixed(1)}
+                sintomas={sintomas}
               />
             ))}
           </div>

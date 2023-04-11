@@ -7,20 +7,24 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../components/axiosInstances";
 
-const SintomasModal = ({ isOpen, onClose }) => {
-  const [sintomas, setSintomas] = useState([]);
+const SintomasModal = ({ isOpen, onClose, nome, sintomas }) => {
+  const [sintomasApresentados, setSintomasApresentados] = useState([]);
+  const [sintomasNaoApresentados, setSintomasNaoApresentados] = useState([]);
 
   useEffect(() => {
     const url = "/listar_sintomas";
-    const mensagem = "nome e sintomas";
+    const mensagem = { doenca: nome, sintomas: sintomas };
     axiosInstance
       .post(url, mensagem)
       .then((resposta) => {
-        setSintomas(Object.entries(resposta.data));
-        console.log("Resposta retornada: ", resposta);
+        console.log("Resposta retornada: ", resposta.data);
+        setSintomasApresentados(resposta.data.sintomasApresentados.sintomas);
+        setSintomasNaoApresentados(
+          resposta.data.sintomasNaoApresentados.sintomas
+        );
       })
       .catch((erro) => {
         console.error("Erro ao enviar objeto:", erro.message);
@@ -31,12 +35,21 @@ const SintomasModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>
-          <h4>Sintomas apresentados:</h4>
-          <h4>Sintomas <b>não</b> apresentados:</h4>
-        </ModalHeader>
+        <ModalHeader>Sintomas</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>{sintomas}</ModalBody>
+        <ModalBody>
+          <h4>Sintomas apresentados:</h4>
+          {sintomasApresentados.map((sintoma) => (
+            <div key={sintoma}>{sintoma}</div>
+          ))}
+          <br />
+          <h4>
+            Sintomas <b>não</b> apresentados:
+          </h4>
+          {sintomasNaoApresentados.map((sintoma) => (
+            <div key={sintoma}>{sintoma}</div>
+          ))}
+        </ModalBody>
         <ModalFooter justifyContent="start"></ModalFooter>
       </ModalContent>
     </Modal>
