@@ -20,44 +20,33 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [age, setAge] = useState(dataEdit.age || "");
   const [sintomasSelecionados, setSintomasSelecionados] = useState([]);
 
-  const [listaDoencas, setListaDoencas] = useState([]);
+  const [listaSintomas, setListaSintomas] = useState([]);
 
   useEffect(() => {
     fetch("../../../backend/database/help_sintomas.txt")
       .then((response) => response.text())
-      .then((data) => setListaDoencas(data.split("\n")));
+      .then((data) => setListaSintomas(data.split("\n")));
   }, []);
   // Renderiza as checkboxes com os labels
 
-  const handleSintomasChange = (e) => {
-    const sintomaSelecionado = e.target.value;
-    const isChecked = e.target.checked;
 
-    if (isChecked) {
-      setSintomasSelecionados([...sintomasSelecionados, sintomaSelecionado]);
-    } else {
-      setSintomasSelecionados(
-        sintomasSelecionados.filter((sintoma) => sintoma !== sintomaSelecionado)
-      );
-    }
+  const handleSintomasChange = (e) => {
+    const sintomasSelecionadosTemp = [...sintomasSelecionados];
+    const sintomaIndex = parseInt(e.target.id.split("-")[1]);
+    sintomasSelecionadosTemp[sintomaIndex] = e.target.checked ? 1 : 0;
+    setSintomasSelecionados(sintomasSelecionadosTemp);
   };
+
 
   const handleSave = () => {
     if (!cpf || !name) return;
 
-    if (Object.keys(dataEdit).length) {
-      data[dataEdit.index] = { cpf, name };
-    }
-
-    const newDataArray = !Object.keys(dataEdit).length
-      ? [...(data ? data : []), { cpf, name }]
-      : [...(data ? data : [])];
 
     const obj = {
-      cpf:"",
-      nome: "",
-      idade: 0,
-      sintomas: ""
+      cpf:cpf,
+      nome: name,
+      idade: age,
+      sintomas: sintomasSelecionados.join("|") + "|"
     };
     
     axiosInstance.post('/atualizar_paciente', obj)
@@ -68,16 +57,10 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       console.error("Erro GET:", erro.message);
     });
 
-    setData(newDataArray);
-
 
     onClose();
   };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -110,19 +93,21 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
 
               <FormLabel>Sintomas</FormLabel>
               {/* Loop para renderizar uma checkbox para cada sintoma */}
-              {dataEdit.sintomas.map((sintoma, index) => (
+              {listaSintomas.map((sintoma, index) => (
                 <div key={index}>
                   <input
                     type="checkbox"
                     id={`sintoma-${index}`}
-                    checked={dataEdit.sintomas[index] === 1}
+                    checked={dataEdit.sintomas.get(index)===1}
+                    value={sintoma}
                     onChange={handleSintomasChange}
                   />
                   <label htmlFor={`sintoma-${index}`}>
-                    {listaDoencas[index]} - {sintoma}
+                    {listaSintomas[index]}
                   </label>
                 </div>
               ))}
+
             </FormControl>
           </ModalBody>
 
