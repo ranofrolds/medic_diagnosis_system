@@ -58,14 +58,16 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
 
   const handleSave = () => {
     if (!cpf || !name) return;
-
+  
+    const sintomasString = sintomasSelecionados.join("|") + "|";
+  
     const obj = {
       cpf: cpf,
       nome: name,
       idade: age,
-      sintomas: sintomasSelecionados.join("|") + "|",
+      sintomas: sintomasString,
     };
-
+  
     axiosInstance
       .post("/atualizar_paciente", obj)
       .then((resposta) => {
@@ -74,7 +76,7 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       .catch((erro) => {
         console.error("Erro GET:", erro.message);
       });
-
+  
     onClose();
   };
 
