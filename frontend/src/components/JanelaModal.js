@@ -10,15 +10,23 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [cpf, setCpf] = useState(dataEdit.cpf || "");
   const [name, setName] = useState(dataEdit.name || "");
   const [age, setAge] = useState(dataEdit.age || "");
   const [sintomasSelecionados, setSintomasSelecionados] = useState([]);
+
+  const [listaDoencas, setListaDoencas] = useState([]);
+
+  useEffect(() => {
+    fetch("../../../backend/database/help_sintomas.txt")
+      .then((response) => response.text())
+      .then((data) => setListaDoencas(data.split("\n")));
+  }, []);
+  // Renderiza as checkboxes com os labels
 
   const handleSintomasChange = (e) => {
     const sintomaSelecionado = e.target.value;
@@ -36,10 +44,6 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const handleSave = () => {
     if (!cpf || !name) return;
 
-    if (emailAlreadyExists()) {
-      return alert("E-mail já cadastrado!");
-    }
-
     if (Object.keys(dataEdit).length) {
       data[dataEdit.index] = { cpf, name };
     }
@@ -53,14 +57,6 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
     setData(newDataArray);
 
     onClose();
-  };
-
-  const emailAlreadyExists = () => {
-    if (dataEdit.name !== name && data?.length) {
-      return data.find((item) => item.name === name);
-    }
-
-    return false;
   };
 
   return (
@@ -96,17 +92,17 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
               <FormLabel>Sintomas</FormLabel>
               {/* Loop para renderizar uma checkbox para cada sintoma */}
               {dataEdit.sintomas.map((sintoma, index) => (
-                <Checkbox
-                  key={index}
-                  value={sintoma}
-                  isChecked={
-                    sintomasSelecionados.includes(sintoma) ||
-                    dataEdit.sintomasSelecionados.includes(sintoma)
-                  }
-                  onChange={handleSintomasChange}
-                >
-                  {sintoma}
-                </Checkbox>
+                <div key={index}>
+                  <input
+                    type="checkbox"
+                    id={`sintoma-${index}`}
+                    checked={dataEdit.sintomas[index] === 1}
+                    onChange={handleSintomasChange}
+                  />
+                  <label htmlFor={`sintoma-${index}`}>
+                    {listaDoencas[index]} - {sintoma}
+                  </label>
+                </div>
               ))}
             </FormControl>
           </ModalBody>
