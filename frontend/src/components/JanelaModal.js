@@ -68,6 +68,8 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       sintomas: sintomasString,
     };
   
+    console.log(obj);
+
     axiosInstance
       .post("/atualizar_paciente", obj)
       .then((resposta) => {
