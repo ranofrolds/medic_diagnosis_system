@@ -10,6 +10,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Checkbox,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import axiosInstance from "./axiosInstances";
@@ -29,7 +30,6 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   }, []);
   // Renderiza as checkboxes com os labels
 
-
   const handleSintomasChange = (e) => {
     const sintomasSelecionadosTemp = [...sintomasSelecionados];
     const sintomaIndex = parseInt(e.target.id.split("-")[1]);
@@ -37,16 +37,14 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
     setSintomasSelecionados(sintomasSelecionadosTemp);
   };
 
-
   const handleSave = () => {
     if (!cpf || !name) return;
 
-
     const obj = {
-      cpf:cpf,
+      cpf: cpf,
       nome: name,
       idade: age,
-      sintomas: sintomasSelecionados.join("|") + "|"
+      sintomas: sintomasSelecionados.join("|") + "|",
     };
 
     axiosInstance
@@ -57,7 +55,6 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       .catch((erro) => {
         console.error("Erro GET:", erro.message);
       });
-
 
     onClose();
   };
@@ -94,21 +91,16 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
 
               <FormLabel>Sintomas</FormLabel>
               {/* Loop para renderizar uma checkbox para cada sintoma */}
-              {listaSintomas.map((sintoma, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`sintoma-${index}`}
-                    checked={dataEdit.sintomas.get(index)===1}
-                    value={sintoma}
-                    onChange={handleSintomasChange}
-                  />
-                  <label htmlFor={`sintoma-${index}`}>
-                    {listaSintomas[index]}
-                  </label>
-                </div>
+              {dataEdit.sintomas.map((sintoma, index) => (
+                <Checkbox
+                  key={index}
+                  value={sintoma}
+                  isChecked={sintomasSelecionados.includes(sintoma)}
+                  onChange={handleSintomasChange}
+                >
+                  {sintoma}
+                </Checkbox>
               ))}
-
             </FormControl>
           </ModalBody>
 
