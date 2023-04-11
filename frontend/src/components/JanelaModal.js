@@ -13,6 +13,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import axiosInstance from "./axiosInstances";
 
 const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [cpf, setCpf] = useState(dataEdit.cpf || "");
@@ -22,10 +23,6 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const handleSave = () => {
     if (!cpf || !name) return;
 
-    if (emailAlreadyExists()) {
-      return alert("E-mail já cadastrado!");
-    }
-
     if (Object.keys(dataEdit).length) {
       data[dataEdit.index] = { cpf, name };
     }
@@ -34,20 +31,27 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       ? [...(data ? data : []), { cpf, name }]
       : [...(data ? data : [])];
 
-    localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
+    const obj = {
+      cpf:"",
+      nome: "",
+      idade: 0,
+      sintomas: ""
+    };
+    
+    axiosInstance.post('/atualizar_paciente', obj)
+    .then((resposta) => {
+      console.log(resposta);
+    })
+    .catch((erro) => {
+      console.error("Erro GET:", erro.message);
+    });
 
     setData(newDataArray);
+
 
     onClose();
   };
 
-  const emailAlreadyExists = () => {
-    if (dataEdit.name !== name && data?.length) {
-      return data.find((item) => item.name === name);
-    }
-
-    return false;
-  };
 
   return (
     <>

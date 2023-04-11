@@ -1,20 +1,30 @@
-POST http://localhost:8000/listar_sintomas
-Content-Type: application/json
+# POST http://localhost:8000/listar_sintomas
+# Content-Type: application/json
 
-{
-    "doenca":"herpes",
-    "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
-}
+# {
+#     "doenca":"herpes",
+#     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+# }
 
 # POST http://localhost:8000/processar_diagnostico
 # Content-Type: application/json
 
 # {
 #     "cpf":"14145328900",
-#     "nome": "Urubu",
+#     "nome": "Urdadu",
 #     "idade": 35,
 #     "sintomas": "0|1|1|0|1|0|1|0|0|1|1|0|0|1|1|1|0|1|0|1|1|1|0|"
 # }
+
+POST http://localhost:8000/atualizar_paciente
+Content-Type: application/json
+
+{
+    "cpf":"14145328900",
+    "nome": "Gash",
+    "idade": 15,
+    "sintomas": "0|1|1|0|1|0|1|0|0|1|1|0|0|1|1|1|0|1|0|1|1|1|0|"
+}
 
 
 # POST http://localhost:8000/remover_paciente
