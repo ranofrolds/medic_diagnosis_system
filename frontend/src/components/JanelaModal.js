@@ -10,7 +10,7 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Box,
+  Checkbox,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -18,6 +18,20 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [cpf, setCpf] = useState(dataEdit.cpf || "");
   const [name, setName] = useState(dataEdit.name || "");
   const [age, setAge] = useState(dataEdit.age || "");
+  const [sintomasSelecionados, setSintomasSelecionados] = useState([]);
+
+  const handleSintomasChange = (e) => {
+    const sintomaSelecionado = e.target.value;
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      setSintomasSelecionados([...sintomasSelecionados, sintomaSelecionado]);
+    } else {
+      setSintomasSelecionados(
+        sintomasSelecionados.filter((sintoma) => sintoma !== sintomaSelecionado)
+      );
+    }
+  };
 
   const handleSave = () => {
     if (!cpf || !name) return;
@@ -58,30 +72,42 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
           <ModalCloseButton />
           <ModalBody>
             <FormControl display="flex" flexDir="column" gap={4}>
-              <Box>
-                <FormLabel>CPF</FormLabel>
-                <Input
-                  type="text"
-                  value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Nome</FormLabel>
-                <Input
-                  type="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Idade</FormLabel>
-                <Input
-                  type="number"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </Box>
+              <FormLabel>CPF</FormLabel>
+              <Input
+                type="text"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+              />
+
+              <FormLabel>Nome</FormLabel>
+              <Input
+                type="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+
+              <FormLabel>Idade</FormLabel>
+              <Input
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+
+              <FormLabel>Sintomas</FormLabel>
+              {/* Loop para renderizar uma checkbox para cada sintoma */}
+              {dataEdit.sintomas.map((sintoma, index) => (
+                <Checkbox
+                  key={index}
+                  value={sintoma}
+                  isChecked={
+                    sintomasSelecionados.includes(sintoma) ||
+                    dataEdit.sintomasSelecionados.includes(sintoma)
+                  }
+                  onChange={handleSintomasChange}
+                >
+                  {sintoma}
+                </Checkbox>
+              ))}
             </FormControl>
           </ModalBody>
 
