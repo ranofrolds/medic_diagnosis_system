@@ -10,7 +10,7 @@ import {
   Tbody,
   Td,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import JanelaModal from "../../../components/JanelaModal";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../components/axiosInstances";
@@ -21,15 +21,14 @@ export const Consult = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
-  const [pacientes, setPacientes] = useState([]);
 
   const listarPacientes = () => {
     const url = "/listar_pacientes";
     axiosInstance
       .get(url)
       .then((resposta) => {
-        setPacientes(resposta.data);
-        console.log(pacientes);
+        setData(resposta.data.pacientes);
+        console.log(resposta.data);
       })
       .catch((erro) => {
         console.error("Erro GET:", erro.message);
@@ -56,6 +55,10 @@ export const Consult = () => {
       });
   };
 
+  useEffect(() => {
+    listarPacientes();
+  }, []);
+
   return (
     <div className="main-div">
       <div className="box-div">
@@ -77,16 +80,16 @@ export const Consult = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ cpf, name, age }, index) => (
+              {data.map(({ cpf, nome, idade, sintomas }, index) => (
                 <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
                   <Td maxW={300}>{cpf}</Td>
-                  <Td maxW={300}>{name}</Td>
-                  <Td maxW={300}>{age}</Td>
+                  <Td maxW={300}>{nome}</Td>
+                  <Td maxW={300}>{idade}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ cpf, name, age, index }),
+                        setDataEdit({ cpf, nome, idade, sintomas, index }),
                         onOpen(),
                       ]}
                     />
@@ -113,13 +116,6 @@ export const Consult = () => {
             setDataEdit={setDataEdit}
           />
         )}
-        <Button
-          colorScheme="orange"
-          onClick={() => [setDataEdit({}), onOpen()]}
-          id="botao-cadastro"
-        >
-          NOVO CADASTRO
-        </Button>
         <Link to="/">
           <Button id="back-menu-principal">Voltar ao menu principal</Button>
         </Link>

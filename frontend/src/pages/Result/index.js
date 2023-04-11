@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Doenca from "../../components/Doenca";
 import axiosInstance from "../../components/axiosInstances";
 import somarArray from "../../components/concatenacaoDados";
+import limparArray from "../../components/concatenacaoDados";
 import formatarDados from "../../components/formatarDados";
 import React, { useState, useEffect } from "react";
 
@@ -17,6 +18,7 @@ export const Result = () => {
     const aux = somarArray("");
     const objeto = formatarDados(aux);
     setSintomas(objeto.sintomas);
+    limparArray();
     const url = "/processar_diagnostico";
     axiosInstance
       .post(url, objeto)
