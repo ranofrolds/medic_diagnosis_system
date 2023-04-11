@@ -54,30 +54,26 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
       : [...(data ? data : [])];
 
     const obj = {
-      cpf:"",
+      cpf: "",
       nome: "",
       idade: 0,
-      sintomas: ""
+      sintomas: "",
     };
-    
-    axiosInstance.post('/atualizar_paciente', obj)
-    .then((resposta) => {
-      console.log(resposta);
-    })
-    .catch((erro) => {
-      console.error("Erro GET:", erro.message);
-    });
+
+    axiosInstance
+      .post("/atualizar_paciente", obj)
+      .then((resposta) => {
+        console.log(resposta);
+      })
+      .catch((erro) => {
+        console.error("Erro GET:", erro.message);
+      });
 
     setData(newDataArray);
-
 
     onClose();
   };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
