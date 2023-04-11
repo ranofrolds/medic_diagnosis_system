@@ -5,7 +5,6 @@ import axiosInstance from "../../components/axiosInstances";
 import somarArray from "../../components/concatenacaoDados";
 import formatarDados from "../../components/formatarDados";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 
 import "../../styles/style.css";
 
@@ -13,12 +12,6 @@ export const Result = () => {
   const [arrayGeral, setArrayGeral] = useState([]);
   const [arrayIndividual, setArrayIndividual] = useState([]);
   const [sintomas, setSintomas] = useState();
-  const navigate = useNavigate();
-
-
-  if (!document.documentElement.innerHTML.trim()) {
-    navigate("/");
-  }
 
   useEffect(() => {
     const aux = somarArray("");
@@ -93,7 +86,6 @@ export const Result = () => {
             onClick={() => {
               setArrayGeral([]);
               setArrayIndividual([]);
-              window.location.reload()
             }}
           >
             Voltar ao menu
