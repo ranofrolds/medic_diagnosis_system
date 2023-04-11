@@ -20,14 +20,9 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [name, setName] = useState(dataEdit.name || "");
   const [age, setAge] = useState(dataEdit.age || "");
   const [sintomasSelecionados, setSintomasSelecionados] = useState([]);
+  const listaSintomas =[    "coceira",    "dor_na_pele",    "dor_no_corpo",    "fadiga",    "febre",    "febre_alta",    "inflamacao_na_pele",    "palidez",    "perda_de_peso",    "chiado_no_peito",    "falta_de_ar",    "tosse_persistente",    "tosse_seca",    "dor_de_cabeca",    "nausea",    "sensibilidade_a_luz",    "tontura",    "visao_turva",    "coceira_anal",    "dor_ao_evacuar",    "sangramento_ao_evacuar",    "azia",    "dor_no_estomago"];
 
-  const [listaSintomas, setListaSintomas] = useState([]);
 
-  useEffect(() => {
-    fetch("../../../backend/database/help_sintomas.txt")
-      .then((response) => response.text())
-      .then((data) => setListaSintomas(data.split("\n")));
-  }, []);
   // Renderiza as checkboxes com os labels
 
   const handleSintomasChange = (e) => {
@@ -94,8 +89,8 @@ const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
               {dataEdit.sintomas.map((sintoma, index) => (
                 <Checkbox
                   key={index}
-                  value={sintoma}
-                  isChecked={sintomasSelecionados.includes(sintoma)}
+                  value={listaSintomas[index]}
+                  isChecked={sintoma===1}
                   onChange={handleSintomasChange}
                 >
                   {sintoma}
