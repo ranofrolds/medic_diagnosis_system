@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Doenca from "../../components/Doenca";
-import axiosInstance from "../../components/axiosInstances";
-import somarArray from "../../components/concatenacaoDados";
 import formatarDados from "../../components/formatarDados";
 import React, { useState } from "react";
+import axiosInstance from "../../components/axiosInstances";
+import somarArray from "../../components/concatenacaoDados"
 
 import "../../styles/style.css";
 
