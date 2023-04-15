@@ -1,4 +1,5 @@
 var arrayDeDados = [];
+var retornoProbabilidades;
 
 //importa um objeto
 export default function somarArray(arrayImportado) {
@@ -16,4 +17,16 @@ export function limparArray() {
 
 export function printarArray() {
   console.log(arrayDeDados);
+}
+
+export function setarRetornoProbabilidades(data){
+    retornoProbabilidades=data;
+}
+
+export function getRetornoProbabilidades(){
+  return retornoProbabilidades;
+}
+
+export function getArrayDados(){
+  return arrayDeDados;
 }
