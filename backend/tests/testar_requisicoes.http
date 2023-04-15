@@ -1,5 +1,4 @@
 # POST http://localhost:8000/listar_sintomas
-<<<<<<< HEAD
 # Content-Type: application/json
 
 # {
@@ -18,27 +17,12 @@
 # }
 
 POST http://localhost:8000/atualizar_paciente
-=======
-# Content-Type: application/json
-
-# {
-#     "doenca":"herpes",
-#     "sintomas": "0|1|1|0|1|0|1|0|0|0|1|0|0|1|1|1|0|1|0|1|1|1|0|"
-# }
-
-POST http://localhost:8000/processar_diagnostico
->>>>>>> 609f058eb473ea366887c746af01e6da2d18b6dd
 Content-Type: application/json
 
 {
     "cpf":"14145328900",
-<<<<<<< HEAD
     "nome": "Gash",
     "idade": 15,
-=======
-    "nome": "Urubu",
-    "idade": 35,
->>>>>>> 609f058eb473ea366887c746af01e6da2d18b6dd
     "sintomas": "0|1|1|0|1|0|1|0|0|1|1|0|0|1|1|1|0|1|0|1|1|1|0|"
 }
 
