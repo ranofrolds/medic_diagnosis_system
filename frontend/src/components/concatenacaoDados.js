@@ -9,11 +9,3 @@ export default function somarArray(arrayImportado) {
   // printarArray(arrayDeDados);
   return arrayDeDados;
 }
-
-export function limparArray() {
-  return (arrayDeDados = []);
-}
-
-export function printarArray() {
-  console.log(arrayDeDados);
-}

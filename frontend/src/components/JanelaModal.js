@@ -12,7 +12,7 @@ import {
   Input,
   Checkbox,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axiosInstance from "./axiosInstances";
 
 const JanelaModal = ({ data, setData, dataEdit, isOpen, onClose }) => {
